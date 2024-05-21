@@ -26,6 +26,7 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SubmissionCongrats from "./pages/Project-Submission/congrats";
 import ProjectListing from "./pages/Project-Listing";
+import ProjectDetails from "./pages/Project-Details";
 
 
 export const App = () => {
@@ -59,6 +60,7 @@ export const App = () => {
             <Route path="/projectSubmission" element={<ProjectSubmission />} />
             <Route path="/congrats" element={<SubmissionCongrats />} />
             <Route path="/projectListing" element={<ProjectListing />} />
+            <Route path="/projectDetails/:id" element={<ProjectDetails />} />
           </Routes>
         </AuthProvider>
       </ThemeProvider>
