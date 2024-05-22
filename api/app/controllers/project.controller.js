@@ -11,7 +11,6 @@ const storage = multer.diskStorage({
     cb(null, "public/uploads/");
   },
   filename: function (req, file, cb) {
-    console.log({ file });
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
@@ -31,7 +30,6 @@ exports.createProject = async (req, res) => {
       }
       const projectData = req.body;
       projectData.userId = 1;
-      console.log(req.files);
       const filePaths = req.files.map((file) => file.path);
       projectData.projectFiles = filePaths;
       const project = await Projects.create(projectData);

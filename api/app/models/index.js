@@ -26,6 +26,11 @@ db.sequelize = sequelize;
 
 db.user = require("../models/user.model.js")(sequelize);
 db.projects = require("../models/project.model.js")(sequelize, db.user);
+db.proposals = require("../models/proposal.model.js")(
+  sequelize,
+  db.user,
+  db.projects
+);
 db.resetPasswordToken = require("../models/passwordResetToken.model.js")(
   sequelize
 );

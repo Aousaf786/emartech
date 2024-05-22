@@ -1,5 +1,6 @@
 const controller = require("../controllers/auth.controller");
 const projectController = require("../controllers/project.controller");
+const proposalController = require("../controllers/proposal.controller");
 
 module.exports = function (app) {
   app.use(function (req, res, next) {
@@ -32,4 +33,15 @@ module.exports = function (app) {
   app.get("/api/auth/projects/:id", projectController.getProjectById);
   app.put("/api/auth/projects/:id", projectController.updateProjectById);
   app.delete("/api/auth/projects/:id", projectController.deleteProjectById);
+
+  //proposal routes
+  app.post("/api/auth/proposal", proposalController.createProposal);
+  app.get("/api/auth/proposalByUser", proposalController.getAllProposalsByUser);
+  app.get(
+    "/api/auth/proposalByProject",
+    proposalController.getAllProposalsByProject
+  );
+  app.get("/api/auth/proposal/:id", proposalController.getProposalById);
+  app.put("/api/auth/proposal/:id", proposalController.updateProposalById);
+  app.delete("/api/auth/proposal/:id", proposalController.deleteProposalById);
 };

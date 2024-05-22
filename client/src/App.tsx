@@ -27,6 +27,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SubmissionCongrats from "./pages/Project-Submission/congrats";
 import ProjectListing from "./pages/Project-Listing";
 import ProjectDetails from "./pages/Project-Details";
+import ProposalSubmission from "./pages/Proposal-Submission";
 
 
 export const App = () => {
@@ -61,6 +62,7 @@ export const App = () => {
             <Route path="/congrats" element={<SubmissionCongrats />} />
             <Route path="/projectListing" element={<ProjectListing />} />
             <Route path="/projectDetails/:id" element={<ProjectDetails />} />
+            <Route path="/projectDetails/:id/proposalSubmission" element={<ProposalSubmission />} />
           </Routes>
         </AuthProvider>
       </ThemeProvider>
