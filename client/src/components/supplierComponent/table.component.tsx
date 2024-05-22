@@ -1,28 +1,8 @@
+import PropTypes from 'prop-types';
 import { useState } from "react";
 import PaginationComponent from "../common/pagination";
 
-
-const TableComponent = () => {
-    const TableData = [
-        {
-            Referance: " CUK-21500031-COC",
-            Date: "  19/03/2024 18:51:59",
-            Amount: "     AED 1,225.09",
-            Payment: "  VISA",
-            Status: "   Shipped"
-
-
-        },
-        {
-            Referance: " CUK-21500031-COC",
-            Date: "  19/03/2024 18:51:59",
-            Amount: "     AED 1,225.09",
-            Payment: "  VISA",
-            Status: "   Shipped"
-
-
-        }]
-    const itemsPerPage = 4; // Set items per page
+const TableComponent = ({ tableData, itemsPerPage, columns }: any) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const handlePageChange = (event: any, value: any) => {
@@ -31,68 +11,65 @@ const TableComponent = () => {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = TableData.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = tableData.slice(indexOfFirstItem, indexOfLastItem);
+
+    if (tableData.length === 0) {
+        return <div>Opss! Not Found</div>;
+    }
+
     return (
-        <div className="table-content">
-            <h1>Recent Orders</h1>
+        <> {tableData.length === 0 ? (
+            <div>Opss! Not Found</div>
+        ) : (
             <div className="responsive-table">
+
                 <table className="table table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                Referance
-                            </th>
-                            <th>
-                                Date
-                            </th>
-                            <th>
-                                Amount
-                            </th>
-                            <th>
-                                Payment
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Order Tracking
-                            </th>
+                            {columns.map((col: any, i: any) => (
+                                <th key={i}>
+                                    {col.header}
+                                </th>
+                            ))}
+
                         </tr>
                     </thead>
                     <tbody>
-                        {currentItems.map((item, i) => (
-                            <tr>
-                                <td>
-                                    {item.Referance}
-                                </td>
-                                <td>
-                                    {item.Date}
-                                </td>
-                                <td>
-                                    {item.Amount}
-                                </td>
-                                <td>
-                                    {item.Status}
-                                </td>
-                                <td>
-                                    Shipped
-                                </td>
-                                <td className="d-flex justify-content-between">
-                                    CC189259091BE
-                                    <button className="view-button">View Detail</button>
-                                </td>
+                        {currentItems.map((item: any, i: any) => (
+                            <tr key={i}>
+                                {columns.map((col: any, j: any) => (
+                                    <td key={j}>
+                                        {item[col.accessor]}
+                                    </td>
+                                ))}
+
                             </tr>
                         ))}
-
                     </tbody>
                 </table>
+
             </div>
+        )}
             <PaginationComponent
-                count={Math.ceil(TableData.length / itemsPerPage)}
+                count={Math.ceil(tableData.length / itemsPerPage)}
                 page={currentPage}
-                onPageChange={handlePageChange} />
-        </div>
+                onPageChange={handlePageChange}
+            />
+        </>
     )
 }
+
+TableComponent.propTypes = {
+    tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
+    itemsPerPage: PropTypes.number,
+    columns: PropTypes.arrayOf(PropTypes.shape({
+        header: PropTypes.string.isRequired,
+        accessor: PropTypes.string.isRequired
+    })).isRequired
+};
+
+TableComponent.defaultProps = {
+    itemsPerPage: 4
+};
 
 export default TableComponent;

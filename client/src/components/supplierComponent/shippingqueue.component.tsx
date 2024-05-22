@@ -1,9 +1,20 @@
 import { useState } from "react";
+import Selector from "../common/selector";
 import { SearchComponent } from "../inputs/search";
 import ShippingtableComponent from "./Shippingtable.Component";
 
 const ShippingQueueComponent = () => {
     const [searchQuery, setSearchQuery] = useState("");
+    const [selectedValue, setSelectedValue] = useState('');
+
+    const options = [
+        { value: 'option1', label: 'Option 1' },
+        { value: 'option2', label: 'Option 2' },
+        { value: 'option3', label: 'Option 3' },
+    ];
+    const handleChange = (event: any) => {
+        setSelectedValue(event.target.value);
+    };
 
     return (
         <>
@@ -12,18 +23,18 @@ const ShippingQueueComponent = () => {
                 <p>This page provides details on all the shipments you are working on and those you have sent to Emartech.</p>
                 <div className="row mt-4">
                     <div className="col-lg-6 d-flex gap-2">
-                        <select className="form-select" aria-label="Default select example">
-                            <option selected>Last Updated</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <select className="form-select" aria-label="Default select example">
-                            <option selected>Status</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                        <Selector
+                            label=""
+                            value={selectedValue}
+                            options={options}
+                            onChange={handleChange}
+                        />
+                        <Selector
+                            label=""
+                            value={selectedValue}
+                            options={options}
+                            onChange={handleChange}
+                        />
                     </div>
                     <div className='col-lg-6'>
                         <SearchComponent onSearch={setSearchQuery} />

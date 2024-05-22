@@ -17,7 +17,13 @@ import ProductListing from "./pages/Product-Listing";
 import { HomePage } from "./pages/home";
 import { LandingPage } from "./pages/landingPage";
 import { ProductdetailPage } from "./pages/productdetailPage";
+import AddProduct from "./pages/supplier/add-product";
+import ExistingProduct from "./pages/supplier/existing-product";
+import InventoryAnalytics from "./pages/supplier/inventory-analytics";
+import ManageClaims from "./pages/supplier/manage-claims";
 import ManageInventory from "./pages/supplier/manage-inventory";
+import ManageOrders from "./pages/supplier/manage-orders";
+import ManageReturns from "./pages/supplier/manage-returns";
 import ShipmentSummary from "./pages/supplier/shipment-summary";
 import ShippingQueue from "./pages/supplier/shipping-queue";
 import { SupplierDashboard } from "./pages/supplier/supplierDashboard";
@@ -51,6 +57,12 @@ export const App = () => {
             <Route path="/manage-inventory" element={<ManageInventory />} />
             <Route path="/shipping-queue" element={<ShippingQueue />} />
             <Route path="/shipment-summary" element={<ShipmentSummary />} />
+            <Route path="/inventory-analytics" element={<InventoryAnalytics />} />
+            <Route path="/manage-orders" element={<ManageOrders />} />
+            <Route path="/manage-returns" element={<ManageReturns />} />
+            <Route path="/manage-claims" element={<ManageClaims />} />
+            <Route path="/add-product" element={<AddProduct />} />
+            <Route path="/existing-product" element={<ExistingProduct />} />
           </Routes>
         </AuthProvider>
       </ThemeProvider>

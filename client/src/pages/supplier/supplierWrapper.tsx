@@ -31,7 +31,7 @@ const dummyList = [
       },
       {
         title: "Analytics",
-        to: "/login"
+        to: "/inventory-analytics"
       },
     ],
   },
@@ -41,7 +41,7 @@ const dummyList = [
     subBtn: [
       {
         title: "Add Product",
-        to: "/login"
+        to: "/add-product"
       },
       {
         title: "Selling Application",
@@ -55,15 +55,15 @@ const dummyList = [
     subBtn: [
       {
         title: "Manage Orders",
-        to: "/login"
+        to: "/manage-orders"
       },
       {
         title: "Manage Returns",
-        to: "/login"
+        to: "/manage-returns"
       },
       {
         title: "Manage Claim",
-        to: "/login"
+        to: "/manage-claims"
       }
     ],
   },

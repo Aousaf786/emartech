@@ -1,184 +1,191 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import PaginationComponent from "../common/pagination";
 
+const TableData = [
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Closed",
+        className: "Closed"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Pending",
+        className: "Pending"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Delivered",
+        className: "Delivered"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Closed",
+        className: "Closed"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Pending",
+        className: "Pending"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Delivered",
+        className: "Delivered"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "heelo",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Closed",
+        className: "Closed"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "hello",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Pending",
+        className: "Pending"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Delivered",
+        className: "Delivered"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Closed",
+        className: "Closed"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Pending",
+        className: "Pending"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "hello",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Delivered",
+        className: "Delivered"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Closed",
+        className: "Closed"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Pending",
+        className: "Pending"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Delivered",
+        className: "Delivered"
+
+
+    },
+    {
+        ShipmentName: "STA (04/02/2024 22:20)-ORF2",
+        ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
+        LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
+        Date: "Apr 2, 20243: 20 PM",
+        ShipTo: "Ahmed",
+        status: "Pending",
+        className: "Pending"
+
+
+    }]
 const ShippingtableComponent = ({ searchQuery }: any) => {
-    const TableData = [
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Closed",
-            className: "Closed"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Pending",
-            className: "Pending"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Delivered",
-            className: "Delivered"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Closed",
-            className: "Closed"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Pending",
-            className: "Pending"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Delivered",
-            className: "Delivered"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "heelo",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Closed",
-            className: "Closed"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "hello",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Pending",
-            className: "Pending"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Delivered",
-            className: "Delivered"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Closed",
-            className: "Closed"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Pending",
-            className: "Pending"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "hello",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Delivered",
-            className: "Delivered"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Closed",
-            className: "Closed"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Pending",
-            className: "Pending"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Delivered",
-            className: "Delivered"
-
-
-        },
-        {
-            ShipmentName: "STA (04/02/2024 22:20)-ORF2",
-            ShipmentNamespan: "17WJ0NWHX, 3GWCDU9R",
-            LastUpdated: ["Apr 14, 2024", <br />, <span>6:24 AM</span>],
-            Date: "Apr 2, 20243: 20 PM",
-            ShipTo: "Ahmed",
-            status: "Pending",
-            className: "Pending"
-
-
-        }]
+    const navigate = useNavigate();
+    const handleChange = (event: any) => {
+        if (event.target.value === "trackShipment") {
+            navigate("/shipment-summary");
+        }
+    };
     const itemsPerPage = 4; // Set items per page
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -257,11 +264,9 @@ const ShippingtableComponent = ({ searchQuery }: any) => {
                                     <div className="d-flex align-items-center gap-3">
 
 
-                                        <select className="form-select track-shipment" aria-label="Default select example">
-                                            <option selected>Track Shipment</option>
-                                            <option value="1">2</option>
-                                            <option value="2">3</option>
-                                            <option value="3">4</option>
+                                        <select className="form-select track-shipment" aria-label="Default select example" onChange={handleChange}>
+                                            <option value="">select your option</option>
+                                            <option value="trackShipment">Track Shipment</option>
                                         </select>
                                     </div>
                                 </td>
