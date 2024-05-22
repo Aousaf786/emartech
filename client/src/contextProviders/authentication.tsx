@@ -4,10 +4,10 @@ import { getUserFromLocalStorage } from "../utils";
 const AuthContext = createContext({});
 
 export type PropType = {
-  children: React.ReactNode 
-}
+  children: React.ReactNode;
+};
 
-export const AuthProvider : FC<PropType> = ({ children }) => {
+export const AuthProvider: FC<PropType> = ({ children }) => {
   const [user, setUser] = useState(getUserFromLocalStorage());
   return (
     <AuthContext.Provider value={{ user, setUser }}>

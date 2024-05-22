@@ -3,7 +3,7 @@ import { Box, Button, Grid, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import { StyledBoxContact } from "./contactUs";
-import { StyledBackgroundBox } from "@/styles";
+import { StyledBackgroundBox } from "../../styles";
 import EmartechWhiteLogo from "@/assets/emartech-logo-white.svg";
 
 const StyledBoxFooter = styled(StyledBoxContact)({

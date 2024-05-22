@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Box, Container } from "@mui/material";
-import { StyledBackgroundBox } from "@/styles";
+import { StyledBackgroundBox } from "../../styles";
 
 export const OurPartners: FC = () => {
   return (

@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { Box, Button, Container, TextField, styled } from "@mui/material";
 
 import { StyledBox } from "./ourServices";
-import { StyledBackgroundBox } from "@/styles";
+import { StyledBackgroundBox } from "../../styles";
 
 const StyledBackgroundBoxContact = styled(StyledBackgroundBox)({
   minHeight: "48vh",

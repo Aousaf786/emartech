@@ -8,7 +8,7 @@ import {
   OurPartners,
   OurServices,
   Testimonial,
-} from "@/components/landingPageComp";
+} from "../components/landingPageComp";
 import React from "react";
 
 export const LandingPage: FC = () => {

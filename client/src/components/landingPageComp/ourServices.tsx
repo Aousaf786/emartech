@@ -7,7 +7,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { StyledBackgroundBox } from "@/styles";
+import { StyledBackgroundBox } from "../../styles";
 import ServicesLogo from "@/assets/Group 2.svg";
 
 const CardHeaderStyle = {
