@@ -3,6 +3,7 @@ main {
     margin-left: 65px;
     padding: 30px;
     background: #f8f8f8;
+    min-height: calc(100vh - 100px);
 
     .Widgets-content {
         .Widgets-card {
@@ -235,7 +236,8 @@ main {
                         border: 0px;
                         height: 28px;
                         border-radius: 5px;
-                        width: 104px;
+                        min-width: 104px;
+                        padding: 5px 10px;
 
                         &.Closed {
                             background: var(--Primary-Black, #3C3C3C);
@@ -589,6 +591,28 @@ main {
                     }
                 }
             }
+        }
+    }
+
+    .box-card {
+        box-shadow: 0px 4px 30px 0px #00000026;
+        background: linear-gradient(270.59deg, #079759 0.48%, #35C350 99.47%);
+        padding: 20px;
+        border-radius: 4px;
+        margin-top: 20px;
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 16px;
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 16px;
+            color: #FFFFFF;
         }
     }
 }

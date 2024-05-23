@@ -1,8 +1,20 @@
 
 import { useState } from 'react';
-import Select from 'react-select';
 import Selector from '../common/selector';
-import { SearchComponent } from "../inputs/search";
+const cardData = [
+    {
+        description: "Average Return Rate",
+        heading: "3.51 %"
+    },
+    {
+        description: "Total Return Units",
+        heading: "2 Units"
+    },
+    {
+        description: "Number of Products with Return",
+        heading: "1 SKU"
+    }
+]
 
 const ManageReturnsComponent = () => {
     const [value, setValue] = useState('')
@@ -88,7 +100,7 @@ const ManageReturnsComponent = () => {
                             </div>
                             <div className="slect-lebal">
                                 <Selector
-                                    label="Order Date"
+                                    label="Product Group"
                                     value={selectedValue}
                                     options={options}
                                     onChange={handleChange}
@@ -96,14 +108,26 @@ const ManageReturnsComponent = () => {
                             </div>
                             <div className="slect-lebal">
                                 <div className="slect-lebal">
-                                    <label>Country/Region</label>
-                                    <Select options={options} value={value} onChange={changeHandler} styles={customStyles} />
+                                    <Selector
+                                        label="Marketplace"
+                                        value={selectedValue}
+                                        options={options}
+                                        onChange={handleChange}
+                                    />
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div className="col-lg-4"> <SearchComponent onSearch={setSearchQuery} /></div>
+                </div>
+                <div className="row">
+                    {cardData.map((item, i) => (
+                        <div className="col-lg-4" key={i}>
+                            <div className="box-card">
+                                <p>{item.description}</p>
+                                <h2>{item.heading}</h2>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
 

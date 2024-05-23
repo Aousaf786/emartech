@@ -27,6 +27,7 @@ import ManageReturns from "./pages/supplier/manage-returns";
 import ShipmentSummary from "./pages/supplier/shipment-summary";
 import ShippingQueue from "./pages/supplier/shipping-queue";
 import { SupplierDashboard } from "./pages/supplier/supplierDashboard";
+import ViewSellingApplication from "./pages/supplier/view-selling-application";
 import { baseTheme } from "./theme";
 
 
@@ -63,6 +64,7 @@ export const App = () => {
             <Route path="/manage-claims" element={<ManageClaims />} />
             <Route path="/add-product" element={<AddProduct />} />
             <Route path="/existing-product" element={<ExistingProduct />} />
+            <Route path="/view-selling-application" element={<ViewSellingApplication />} />
           </Routes>
         </AuthProvider>
       </ThemeProvider>

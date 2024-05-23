@@ -45,7 +45,7 @@ const dummyList = [
       },
       {
         title: "Selling Application",
-        to: "/login"
+        to: "/view-selling-application"
       }
     ],
   },
