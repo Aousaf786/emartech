@@ -30,6 +30,7 @@ export const colorPalette = {
   grey900: "#101828",
   breadCrumbBackground: "#D9D9D9",
   headingLinesGreen: "#39C64E",
+  subHeadinglightBlack: "#132F41",
 };
 
 const commonCss = {

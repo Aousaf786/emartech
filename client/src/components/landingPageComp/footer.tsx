@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 
 import { StyledBoxContact } from "./contactUs";
 import { StyledBackgroundBox } from "@/styles";
+import { useNavigate } from "react-router-dom";
 
 const StyledBoxFooter = styled(StyledBoxContact)({
   margin: "0 !important",
@@ -26,6 +27,9 @@ const FooterBox = styled(StyledBackgroundBox)({
     margin: "10px 0 30px 0",
   },
   "@media(min-width: 768px)": {},
+  "& .hoverText":{
+    cursor: "pointer",
+  }
 });
 
 const GradientBox = styled(Box)(() => ({
@@ -33,6 +37,7 @@ const GradientBox = styled(Box)(() => ({
 }));
 
 export const Footer: FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
   const handleEmailChange = (event: any) => {
@@ -67,7 +72,7 @@ export const Footer: FC = () => {
               INFORMATION
             </h4>
             <p className="para-text white-color">ABOUT US</p>
-            <p className="para-text white-color">PRIVACY POLICY</p>
+            <p className="para-text white-color hoverText" onClick={ () => navigate("/privacy-policy") }>PRIVACY POLICY</p>
             <p className="para-text white-color">FAQ’S</p>
           </Grid>
 
