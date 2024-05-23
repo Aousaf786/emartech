@@ -6,7 +6,6 @@ import BreadCrumbs from "../../components/common/breadcrumbs";
 import ProjectListingFilters from "../../components/projectListingComp/filter";
 import JobSearch from "../../components/projectListingComp/jobSearch";
 import ListProjectWithHeader from "@/components/projectListingComp/projectList";
-import PaginationComponent from "@/components/common/pagination";
 
 const MainDiv = styled(Box)(({ theme }: any) => ({
   marginTop: "168px",
@@ -85,7 +84,6 @@ const MainDiv = styled(Box)(({ theme }: any) => ({
 }));
 
 const ProjectListing: FC = () => {
-  const [pageNo, setPageNo] = useState(1);
   return (
     <>
       <Header />
@@ -115,13 +113,6 @@ const ProjectListing: FC = () => {
             </Grid>
             <Grid item xs={12} sm={7} md={6} lg={6}>
               <ListProjectWithHeader />
-              <Box className="paginationContainerComp">
-                <PaginationComponent
-                  count={10}
-                  page={pageNo}
-                  onPageChange={(event: any, value: any) => setPageNo(value)}
-                />
-              </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3} lg={3}>
               <Box className="emailUpdates">

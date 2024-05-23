@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Box, Grid, styled } from "@mui/material";
 import CustomizedMenus from "./filterMenu";
 import PinDropOutlined from "@mui/icons-material/PinDropOutlined";
@@ -10,6 +10,8 @@ import Frame173 from "../../assets/images/Frame172.png";
 import Frame174 from "../../assets/images/Frame173.png";
 import Frame175 from "../../assets/images/Frame174.png";
 import Frame176 from "../../assets/images/Frame175.png";
+import { getAllProjectService } from "@/services/projectServiceCalls";
+import PaginationComponent from "../common/pagination";
 
 const ListProjectMainDiv = styled(Box)(({ theme }: any) => ({
   "& .filterHeaderMain": {
@@ -17,6 +19,7 @@ const ListProjectMainDiv = styled(Box)(({ theme }: any) => ({
     alignItems: "center",
     justifyContent: "space-between",
     flexWrap: "wrap",
+    paddingBottom:"2rem",
     "& .auth-heading": {
       fontWeight: "700",
       color: "rgba(20, 20, 20, 1)",
@@ -167,50 +170,87 @@ const arrayToMap = [
   },
 ];
 const ListProjectWithHeader: FC = () => {
+  const [pageNo, setPageNo] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [projectData, setProjectData] = useState<any>(null);
+
+  useEffect(() => {
+    projectListing();
+  }, [pageNo]);
+
+  const projectListing = async () => {
+    getAllProjectService(
+      `page=${pageNo}&limit=${itemsPerPage}`,
+      (err: any, response: any) => {
+        if (err) {
+        }
+        if (response) {
+          setProjectData(response);
+          debugger;
+        }
+      }
+    );
+  };
   return (
-    <ListProjectMainDiv>
-      <Box className="filterHeaderMain">
-        <h1 className="auth-heading">3177 Jobs</h1>
-        <CustomizedMenus />
-      </Box>
-      {arrayToMap.map((item) => (
-        <Box key={JSON.stringify(item)} className="projectBoxContainer">
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={2}>
-              <img src={item.img} alt="project image" />
-            </Grid>
-            <Grid item xs={12} sm={10}>
-              <h5> {item.title}</h5>
-              <Box className="subtitle-flex">
-                <h4>{item.subTitle}</h4>
-                {item.subText && <p>{item.subText}</p>}
-              </Box>
-              <Box className="projectDependenceBox">
-                <Box className="iconContainer">
-                  <PinDropOutlined />
-                  <p>{item.location}</p>
-                </Box>
-                <p style={{ marginTop: "-6px" }}>.</p>
-                <Box className="iconContainer">
-                  <AccessTimeOutlined />
-                  <p>{item.time}</p>
-                </Box>
-                <p style={{ marginTop: "-6px" }}>.</p>
-                <Box className="iconContainer">
-                  <p>{item.pay}</p>
-                </Box>
-                <p style={{ marginTop: "-6px" }}>.</p>
-                <Box className="iconContainer">
-                  <CalendarTodayOutlined />
-                  <p>{item.posting}</p>
-                </Box>
-              </Box>
-              <p className="paragraphProjectDescription">{item.description}</p>
-            </Grid>
-          </Grid>
+    <>
+      <ListProjectMainDiv>
+        <Box className="filterHeaderMain">
+          <h1 className="auth-heading">
+            {projectData?.totalRecords || "0"} Jobs
+          </h1>
+          <CustomizedMenus />
         </Box>
-      ))}
-    </ListProjectMainDiv>
+        {!!projectData?.projects?.length &&
+          projectData?.projects?.map((item: any, index: number) => (
+            <Box key={JSON.stringify(item)} className="projectBoxContainer">
+              <Grid container spacing={3}>
+                <Grid item xs={12} sm={2}>
+                  <img src={item.img} alt="project image" />
+                </Grid>
+                <Grid item xs={12} sm={10}>
+                  <h5> {item.title}</h5>
+                  <Box className="subtitle-flex">
+                    <h4>{item?.jobTitle}</h4>
+                    {item.subText && <p>{item.subText}</p>}
+                  </Box>
+                  <Box className="projectDependenceBox">
+                    <Box className="iconContainer">
+                      <PinDropOutlined />
+                      <p>{item.location}</p>
+                    </Box>
+                    <p style={{ marginTop: "-6px" }}>.</p>
+                    <Box className="iconContainer">
+                      <AccessTimeOutlined />
+                      <p>{item.time}</p>
+                    </Box>
+                    <p style={{ marginTop: "-6px" }}>.</p>
+                    <Box className="iconContainer">
+                      <p>{item.projectValue}</p>
+                    </Box>
+                    <p style={{ marginTop: "-6px" }}>.</p>
+                    <Box className="iconContainer">
+                      <CalendarTodayOutlined />
+                      <p>{item.posting}</p>
+                    </Box>
+                  </Box>
+                  <p className="paragraphProjectDescription">
+                    {item.projectDescription}
+                  </p>
+                </Grid>
+              </Grid>
+            </Box>
+          ))}
+      </ListProjectMainDiv>
+      {projectData?.totalRecords > itemsPerPage && (
+        <Box className="paginationContainerComp">
+          <PaginationComponent
+            count={Math.ceil(projectData?.totalRecords / itemsPerPage)}
+            page={pageNo}
+            onPageChange={(event: any, value: any) => setPageNo(value)}
+          />
+        </Box>
+      )}
+    </>
   );
 };
 
