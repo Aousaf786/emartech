@@ -408,8 +408,8 @@ export const Header: React.FC = () => {
           <PersonContainer>
             <IconButton onClick={onLoginClick}>
               <PersonIcon sx={{ color: "white" }} />
-              <Typography 
-                sx={{ marginLeft: "5px", color: "white" }} 
+              <Typography
+                sx={{ marginLeft: "5px", color: "white" }}
                 variant="body1"
               >
                 {user ? user.firstName : "Login"}
@@ -420,10 +420,10 @@ export const Header: React.FC = () => {
               user ?
                 <IconButton onClick={onLogoutClick}>
                   <LogoutIcon sx={{ color: "white" }} />
-                </IconButton> : 
+                </IconButton> :
                 <Box onClick={() => navigate("/signup")}
-                  sx={{ display:"flex",alignItems:"center", cursor:"pointer" }}>               
-                  <Typography variant="body1">SignUp</Typography>            
+                  sx={{ display:"flex",alignItems:"center", cursor:"pointer" }}>
+                  <Typography variant="body1">SignUp</Typography>
                 </Box>
             }
           </PersonContainer>

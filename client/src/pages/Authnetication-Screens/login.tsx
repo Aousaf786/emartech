@@ -34,7 +34,7 @@ export const Login: FC = () => {
   const [loginError, setLoginError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-  const { setUser } = useAuth() as any ;
+  const { setUser } = useAuth() as any;
 
   const handleSubmitAction = useCallback(
     (values: any) => {
@@ -45,7 +45,7 @@ export const Login: FC = () => {
         if (response) {
           setUserInLocalStorage(response);
           setUser(response);
-          navigate("/home")
+          navigate("/home");
         }
       });
     },
@@ -144,4 +144,3 @@ export const Login: FC = () => {
     </AuthenticationWrapper>
   );
 };
-
