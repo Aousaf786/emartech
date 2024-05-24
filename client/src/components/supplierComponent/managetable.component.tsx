@@ -26,7 +26,7 @@ const ManagetableComponent = () => {
 
         },
         {
-            Status: "Active",
+            Status: "Inctive",
             Image: tableimage,
             ProductName: ["Signature Acrylic Signature", <br />, "Acrylic Colours – 100 gm"],
             DateCreated: "03/19/2024 13:05:46",
@@ -45,7 +45,7 @@ const ManagetableComponent = () => {
 
 
         }]
-    const itemsPerPage = 2; // Set items per page
+    const itemsPerPage = 4; // Set items per page
     const [currentPage, setCurrentPage] = useState(1);
 
     const handlePageChange = (event: any, value: any) => {

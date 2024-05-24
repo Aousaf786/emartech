@@ -7,9 +7,9 @@ import OrdersIcon from "@/assets/svgIcons/orders.svg";
 import PaymentsIcon from "@/assets/svgIcons/payments.svg";
 import PerformanceIcon from "@/assets/svgIcons/performance.svg";
 import ShipmentIcon from "@/assets/svgIcons/shipment.svg";
-import "../../components/supplierComponent/supplierStyle.scss";
-import { FC, useState } from "react";
 import { styled } from "@mui/material";
+import { FC, useState } from "react";
+import "../../components/supplierComponent/supplierStyle.scss";
 
 const dummyList = [
   {
@@ -22,17 +22,17 @@ const dummyList = [
     title: "Inventory",
     subBtn: [
       {
-        title: "All Inventory", 
+        title: "All Inventory",
         to: "/manage-inventory"
-      }, 
+      },
       {
-        title: "Shipments", 
+        title: "Shipments",
         to: "/shipping-queue"
-      }, 
+      },
       {
-        title: "Analytics", 
+        title: "Analytics",
         to: "/login"
-      }, 
+      },
     ],
   },
   {
@@ -94,34 +94,34 @@ const dummyList = [
 ];
 
 
-export const SupplierWrapper : FC<any>= ({ children }) => {
-  const [open, setOpen] = useState(true); 
+export const SupplierWrapper: FC<any> = ({ children }) => {
+  const [open, setOpen] = useState(true);
   return (
     <div>
-      <Sidebar isDrawerOpen={open}  setIsDrawerOpen={setOpen} dummyList={dummyList} />
-      <AppBarComponent  isDrawerOpen={open}/>
+      <Sidebar isDrawerOpen={open} setIsDrawerOpen={setOpen} dummyList={dummyList} />
+      <AppBarComponent isDrawerOpen={open} />
       <Main open={open}>
         {children}
-      </Main>
+      </Main>zsx´EZ€@@
     </div>
   );
 };
 
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
-    open?: boolean;
-  }>(({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
+  open?: boolean;
+}>(({ theme, open }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(3),
+  transition: theme.transitions.create("margin", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
     transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: `${drawerWidth}px`,
-    }),
-  }));
+    marginLeft: `${drawerWidth}px`,
+  }),
+}));

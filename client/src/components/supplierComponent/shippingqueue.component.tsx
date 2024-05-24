@@ -29,7 +29,6 @@ const ShippingQueueComponent = () => {
                         <SearchComponent onSearch={setSearchQuery} />
                     </div>
                 </div>
-
             </div>
             <ShippingtableComponent searchQuery={searchQuery} />
         </>

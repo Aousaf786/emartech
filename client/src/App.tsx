@@ -13,18 +13,19 @@ import {
   ResetPasswordSuccess,
   Signup,
 } from "./pages/Authnetication-Screens/index";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ProductListing from "./pages/Product-Listing";
+import ProjectSubmission from "./pages/Project-Submission";
+import SubmissionCongrats from "./pages/Project-Submission/congrats";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import { HomePage } from "./pages/home";
 import { LandingPage } from "./pages/landingPage";
 import { ProductdetailPage } from "./pages/productdetailPage";
 import ManageInventory from "./pages/supplier/manage-inventory";
+import ShipmentSummary from "./pages/supplier/shipment-summary";
 import ShippingQueue from "./pages/supplier/shipping-queue";
 import { SupplierDashboard } from "./pages/supplier/supplierDashboard";
 import { baseTheme } from "./theme";
-import ProjectSubmission from "./pages/Project-Submission";
-import TermsAndConditions from "./pages/TermsAndConditions";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import SubmissionCongrats from "./pages/Project-Submission/congrats";
 import ProjectListing from "./pages/Project-Listing";
 import ProjectDetails from "./pages/Project-Details";
 import ProposalSubmission from "./pages/Proposal-Submission";
@@ -56,6 +57,7 @@ export const App = () => {
             <Route path="/product-detail" element={<ProductdetailPage />} />
             <Route path="/manage-inventory" element={<ManageInventory />} />
             <Route path="/shipping-queue" element={<ShippingQueue />} />
+            <Route path="/shipment-summary" element={<ShipmentSummary />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/projectSubmission" element={<ProjectSubmission />} />
