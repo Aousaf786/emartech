@@ -9,7 +9,8 @@ import AccessTimeOutlined from "@mui/icons-material/AccessTimeOutlined";
 import PaymentsOutlined from "@mui/icons-material/PaymentsOutlined";
 import UpdateSharp from "@mui/icons-material/UpdateSharp";
 import ReactStars from "react-rating-stars-component";
-import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteBorderOutlined from "@mui/icons-material/FavoriteBorderOutlined";
+import { useNavigate } from "react-router-dom";
 
 const ProjectDetailsMainDiv = styled(Box)(({ theme }: any) => ({
   marginTop: "168px",
@@ -199,9 +200,9 @@ const ProjectDetailsMainDiv = styled(Box)(({ theme }: any) => ({
     justifyContent: "end",
     "& button": {
       width: "180px",
-      "& svg":{
-        margin:"unset",
-      }
+      "& svg": {
+        margin: "unset",
+      },
     },
     "& .submitBtn": {
       backgroundColor: theme.palette.common.headingLinesGreen,
@@ -211,6 +212,7 @@ const ProjectDetailsMainDiv = styled(Box)(({ theme }: any) => ({
 }));
 
 const ProjectDetails: FC = () => {
+  const navigate = useNavigate();
   const [readMore, setReadMore] = useState(false);
 
   const description =
@@ -424,6 +426,7 @@ const ProjectDetails: FC = () => {
                   />
                 </svg>
               }
+              onClick={() => navigate("/projectDetails/3/proposalSubmission")}
               type="button"
               variant="contained"
               className="submitBtn"

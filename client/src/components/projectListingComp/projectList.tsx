@@ -12,6 +12,7 @@ import Frame175 from "../../assets/images/Frame174.png";
 import Frame176 from "../../assets/images/Frame175.png";
 import { getAllProjectService } from "@/services/projectServiceCalls";
 import PaginationComponent from "../common/pagination";
+import { useNavigate } from "react-router-dom";
 
 const ListProjectMainDiv = styled(Box)(({ theme }: any) => ({
   "& .filterHeaderMain": {
@@ -19,7 +20,7 @@ const ListProjectMainDiv = styled(Box)(({ theme }: any) => ({
     alignItems: "center",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    paddingBottom:"2rem",
+    paddingBottom: "2rem",
     "& .auth-heading": {
       fontWeight: "700",
       color: "rgba(20, 20, 20, 1)",
@@ -56,6 +57,7 @@ const ListProjectMainDiv = styled(Box)(({ theme }: any) => ({
         fontWeight: "500",
         color: "rgba(20, 20, 20, 1)",
         margin: "unset",
+        cursor: "pointer",
       },
       "& p": {
         margin: "unset",
@@ -170,6 +172,7 @@ const arrayToMap = [
   },
 ];
 const ListProjectWithHeader: FC = () => {
+  const navigate = useNavigate();
   const [pageNo, setPageNo] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [projectData, setProjectData] = useState<any>(null);
@@ -200,8 +203,9 @@ const ListProjectWithHeader: FC = () => {
           </h1>
           <CustomizedMenus />
         </Box>
-        {!!projectData?.projects?.length &&
-          projectData?.projects?.map((item: any, index: number) => (
+        {
+          // !!projectData?.projects?.length &&
+          arrayToMap?.map((item: any, index: number) => (
             <Box key={JSON.stringify(item)} className="projectBoxContainer">
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={2}>
@@ -210,7 +214,9 @@ const ListProjectWithHeader: FC = () => {
                 <Grid item xs={12} sm={10}>
                   <h5> {item.title}</h5>
                   <Box className="subtitle-flex">
-                    <h4>{item?.jobTitle}</h4>
+                    <h4 onClick={() => navigate("/projectDetails/3")}>
+                      {item?.jobTitle || item?.subTitle}
+                    </h4>
                     {item.subText && <p>{item.subText}</p>}
                   </Box>
                   <Box className="projectDependenceBox">
@@ -230,16 +236,17 @@ const ListProjectWithHeader: FC = () => {
                     <p style={{ marginTop: "-6px" }}>.</p>
                     <Box className="iconContainer">
                       <CalendarTodayOutlined />
-                      <p>{item.posting}</p>
+                      <p>{item.posting || item?.pay}</p>
                     </Box>
                   </Box>
                   <p className="paragraphProjectDescription">
-                    {item.projectDescription}
+                    {item.projectDescription || item?.description}
                   </p>
                 </Grid>
               </Grid>
             </Box>
-          ))}
+          ))
+        }
       </ListProjectMainDiv>
       {projectData?.totalRecords > itemsPerPage && (
         <Box className="paginationContainerComp">
