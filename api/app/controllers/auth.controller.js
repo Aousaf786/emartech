@@ -22,12 +22,18 @@ exports.isAuthenticated = (req, res, next) => {
 exports.signin = (req, res) => {
   try {
     passport.authenticate("local", { session: true }, (err, user) => {
-      if (err) {
-        return res.status(403).send(err);
+      // if (err) {
+      //   return res.status(403).send(err);
+      // }
+      if (!user) {
+        // Handle authentication failures
+        return res.status(403).send({ message: "Invalid Credentials" });
       }
       req.logIn(user, (err) => {
-        if (err) return res.error(err);
-        else req.session.save(() => res.send(user));
+        if (err) {
+          // Handle login errors
+          return res.status(500).send({ message: "Login failed" });
+        } else req.session.save(() => res.send(user));
       });
     })(req, res);
   } catch (error) {
@@ -37,9 +43,7 @@ exports.signin = (req, res) => {
 
 exports.signup = async (req, res) => {
   const { phoneNumber, role, password } = req.body;
-  const { encryptedPassword, salt } = await getEncryptedPassword(
-    password,
-  );
+  const { encryptedPassword, salt } = await getEncryptedPassword(password);
   try {
     // Create the user in the database
     const newUser = await User.create({
@@ -72,8 +76,10 @@ exports.signup = async (req, res) => {
 exports.forgotPassword = async (req, res) => {
   try {
     const { forgetPassword } = req.body;
-    const number = forgetPassword && forgetPassword.includes("+") ?
-      getPhoneNumberDetails(req.body.forgetPassword)?.phoneNumber ?? "" : forgetPassword;
+    const number =
+      forgetPassword && forgetPassword.includes("+")
+        ? getPhoneNumberDetails(req.body.forgetPassword)?.phoneNumber ?? ""
+        : forgetPassword;
     const whereClause = {
       [Op.or]: [
         { email: forgetPassword },
@@ -108,11 +114,14 @@ exports.forgotPassword = async (req, res) => {
         firstName: user.firstName,
       });
 
-      res
-        .status(200)
-        .send({ message: "Password reset email sent successfully", email: user.email });
+      res.status(200).send({
+        message: "Password reset email sent successfully",
+        email: user.email,
+      });
     } else {
-      res.status(403).send({ message: "User not found against this email/phoneNumber" });
+      res
+        .status(403)
+        .send({ message: "User not found against this email/phoneNumber" });
     }
   } catch (err) {
     return res.status(500).send(err);

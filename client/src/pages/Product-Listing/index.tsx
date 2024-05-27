@@ -48,7 +48,7 @@ const ProductListing: FC = () => {
           </Grid>
 
           <ShopByBrands />
-          <RequestBanner/>
+          <RequestBanner />
         </Container>
       </MainDiv>
       <Footer />

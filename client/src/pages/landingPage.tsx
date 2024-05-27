@@ -10,7 +10,7 @@ import {
   Testimonial,
 } from "@/components/landingPageComp";
 
-export const LandingPage: FC = () => {
+const LandingPage: FC = () => {
   return (
     <Box>
       <Dashboard />
@@ -23,3 +23,5 @@ export const LandingPage: FC = () => {
     </Box>
   );
 };
+
+export default LandingPage;
