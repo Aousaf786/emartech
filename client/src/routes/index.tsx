@@ -11,6 +11,10 @@ import PrivateRoutes from "./privateRoutes";
 import PublicRoutes from "./publicRoutes";
 import { GlobalLoader } from "@/components/common";
 
+const ProjectListing = lazy(() => import("@/pages/Project-Listing"));
+const ProjectDetails = lazy(() => import("@/pages/Project-Details"));
+const ProposalSubmission = lazy(() => import("@/pages/Proposal-Submission"));
+
 // Misc
 const Login = lazy(() => import("@/pages/Authnetication-Screens/login"));
 const SignUp = lazy(() => import("@/pages/Authnetication-Screens/singup"));
@@ -28,7 +32,7 @@ const ResetPasswordSuccess = lazy(
 );
 const LandingPage = lazy(() => import("@/pages/landingPage"));
 const ProductListing = lazy(() => import("@/pages/Product-Listing"));
-const ProductDetailPage = lazy(() => import("@/pages/productDetailPage"));
+const ProductDetailPage = lazy(() => import("../pages/productdetailPage"));
 // const Layout = lazy(() => import("../containers/layout"));
 
 // SUPPLIER SCREENS
@@ -64,6 +68,13 @@ const AppRoutes: React.FC = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/projectSubmission" element={<ProjectSubmission />} />
           <Route path="/congrats" element={<SubmissionCongrats />} />
+
+          <Route path="/projectListing" element={<ProjectListing />} />
+          <Route path="/projectDetails/:id" element={<ProjectDetails />} />
+          <Route
+            path="/projectDetails/:id/proposalSubmission"
+            element={<ProposalSubmission />}
+          />
 
           {/* PUBLIC ROUTES FOR AUTH */}
           <Route path="/auth" element={<PublicRoutes />}>
