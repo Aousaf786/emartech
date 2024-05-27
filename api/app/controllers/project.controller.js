@@ -11,7 +11,6 @@ const storage = multer.diskStorage({
     cb(null, "public/uploads/");
   },
   filename: function (req, file, cb) {
-    console.log({ file });
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
@@ -31,7 +30,6 @@ exports.createProject = async (req, res) => {
       }
       const projectData = req.body;
       projectData.userId = 1;
-      console.log(req.files);
       const filePaths = req.files.map((file) => file.path);
       projectData.projectFiles = filePaths;
       const project = await Projects.create(projectData);
@@ -45,9 +43,24 @@ exports.createProject = async (req, res) => {
 // Get all projects
 exports.getAllProjects = async (req, res) => {
   try {
-    // Fetch all projects including the associated user data
-    const projects = await Projects.findAll({ include: User });
-    res.json(projects);
+    let page = req.query.page ? parseInt(req.query.page) : 1; // Default page is 1
+    let limit = req.query.limit ? parseInt(req.query.limit) : 10; // Default limit is 10
+
+    // Calculate the offset based on the page and limit
+    let offset = (page - 1) * limit;
+
+    // Fetch total number of projects
+    const totalProjects = await Projects.count();
+
+    // Fetch projects including the associated user data with pagination
+    const projects = await Projects.findAll({
+      include: User,
+      limit: limit,
+      offset: offset
+    });
+
+    // Send response with projects and total count
+    res.json({ projects: projects, totalRecords: totalProjects });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

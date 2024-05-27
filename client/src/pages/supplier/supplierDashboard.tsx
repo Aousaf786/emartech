@@ -46,3 +46,5 @@ export const SupplierDashboard = () => {
     </SupplierWrapper>
   );
 };
+
+export default SupplierDashboard;

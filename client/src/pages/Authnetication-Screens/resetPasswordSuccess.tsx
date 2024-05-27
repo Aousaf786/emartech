@@ -6,7 +6,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
 import { AuthenticationWrapper } from "./index";
 
-export const ResetPasswordSuccess: FC = () => {
+const ResetPasswordSuccess: FC = () => {
   const navigate = useNavigate();
   return (
     <AuthenticationWrapper backgroundImageUrl="../../../src/assets/signup.png">
@@ -21,7 +21,7 @@ export const ResetPasswordSuccess: FC = () => {
         <Button
           className="auth-btn input-label"
           variant={ButtonVariants.OUTLINED}
-          onClick={() => navigate("/login")}
+          onClick={() => navigate("/auth/login")}
         >
           <LoginIcon />
           Back to Login
@@ -30,3 +30,5 @@ export const ResetPasswordSuccess: FC = () => {
     </AuthenticationWrapper>
   );
 };
+
+export default ResetPasswordSuccess;

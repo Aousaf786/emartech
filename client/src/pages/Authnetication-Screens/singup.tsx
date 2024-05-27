@@ -44,7 +44,7 @@ const DropdownOptions = [
   UserRoles.USER,
 ];
 
-export const Signup: FC = () => {
+const Signup: FC = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -57,7 +57,7 @@ export const Signup: FC = () => {
         (err: any, response: any) => {
           setIsSubmitting(false);
           if (err) console.log("-----------err-------", err);
-          if (response) navigate("/login");
+          if (response) navigate("/auth/login");
         }
       );
     },
@@ -281,3 +281,5 @@ export const Signup: FC = () => {
     </AuthenticationWrapper>
   );
 };
+
+export default Signup;

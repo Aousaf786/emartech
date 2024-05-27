@@ -20,7 +20,7 @@ const initialValues = {
   forgetPassword: "",
 };
 
-export const ForgotPassword: FC = () => {
+const ForgotPassword: FC = () => {
   const navigate = useNavigate();
   const [apiError, setApiError] = useState(false);
   const [disableSubmit, setDisableSubmit] = useState(false);
@@ -33,7 +33,7 @@ export const ForgotPassword: FC = () => {
         }
         if (response) {
           const { email } = response;
-          navigate(`/emailVerification/${email}`);
+          navigate(`/auth/emailVerification/${email}`);
         }
       });
     },
@@ -80,3 +80,5 @@ export const ForgotPassword: FC = () => {
     </AuthenticationWrapper>
   );
 };
+
+export default ForgotPassword;

@@ -1,13 +1,14 @@
 import { Navigate } from "react-router-dom";
-import { PropType, useAuth } from "../contextProviders/authentication";
+import { PropType } from "../contextProviders/authentication";
 import { FC } from "react";
 
-export const UserRoute : FC<PropType>= ({ children }) => {
-  const { user } = useAuth() as any;
-  if(!user) {
-    return <Navigate to="/login"/>;
+import { useAppSelector } from "@/hooks/storeHooks";
+
+export const UserRoute: FC<PropType> = ({ children }) => {
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
+  if (!isAuthenticated) {
+    return <Navigate to="/auth/login" />;
   }
 
   return children;
-}
-
+};

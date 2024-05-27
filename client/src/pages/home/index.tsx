@@ -9,7 +9,7 @@ import { ImagesPath, SellersImages, TempImages } from "@/constants";
 import { RequestBanner } from "@/components/home";
 import BannerGrids from "@/components/home/bannerGrids";
 
-export const HomePage = () => {
+const HomePage = () => {
   const categories = [
     {
       id: 1,
@@ -147,10 +147,10 @@ export const HomePage = () => {
         <Header />
       </Box>
 
-      <StyledBox sx={{margin:"unset !important"}}>
+      <StyledBox sx={{ margin: "unset !important" }}>
         {/* Banner Section */}
-        <Container maxWidth={"xl"} >
-          <StyledBackgroundBox className="" >
+        <Container maxWidth={"xl"}>
+          <StyledBackgroundBox className="">
             <BannerGrids />
 
             {/* CATEGORIES SECTION */}
@@ -304,3 +304,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;

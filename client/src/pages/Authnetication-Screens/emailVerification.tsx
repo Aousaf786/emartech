@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { maskEmailAddress } from "mask-email-address";
 import mailIcon from "@/assets/mail-icon.svg";
 
-export const EmailVerification: FC = () => {
+const EmailVerification: FC = () => {
   const { email } = useParams();
   const maskedEmail = maskEmailAddress(email as string);
   return (
@@ -27,3 +27,5 @@ export const EmailVerification: FC = () => {
     </AuthenticationWrapper>
   );
 };
+
+export default EmailVerification;

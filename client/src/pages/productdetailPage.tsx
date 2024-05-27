@@ -7,9 +7,7 @@ import { FC } from "react";
 import ProductDescription from "../components/Productdetailcomponent/productdescription";
 import "../components/Productdetailcomponent/style.scss";
 
-
-
-export const ProductdetailPage: FC = () => {
+const ProductDetailPage: FC = () => {
   return (
     <Box>
       <Header />
@@ -23,3 +21,4 @@ export const ProductdetailPage: FC = () => {
     </Box>
   );
 };
+export default ProductDetailPage;
