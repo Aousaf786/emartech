@@ -14,7 +14,7 @@ const initialValues = {
   confirmPassword: "",
 };
 
-export const ResetPassword: FC = () => {
+const ResetPassword: FC = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
@@ -29,7 +29,7 @@ export const ResetPassword: FC = () => {
         { password: newPassword, token },
         (err: any, response: any) => {
           if (err) console.log("-----------err-----------");
-          if (response) navigate("/resetPasswordSuccess");
+          if (response) navigate("/auth/resetPasswordSuccess");
         }
       );
     },
@@ -136,3 +136,5 @@ export const ResetPassword: FC = () => {
     </AuthenticationWrapper>
   );
 };
+
+export default ResetPassword;
