@@ -28,8 +28,10 @@ import ManageClaims from "./pages/supplier/manage-claims";
 import ManageInventory from "./pages/supplier/manage-inventory";
 import ManageOrders from "./pages/supplier/manage-orders";
 import ManageReturns from "./pages/supplier/manage-returns";
+import { PaymentDashboard } from "./pages/supplier/paymentDashboard";
 import ShipmentSummary from "./pages/supplier/shipment-summary";
 import ShippingQueue from "./pages/supplier/shipping-queue";
+import StoreReview from "./pages/supplier/store-review";
 import { SupplierDashboard } from "./pages/supplier/supplierDashboard";
 import ViewSellingApplication from "./pages/supplier/view-selling-application";
 import { baseTheme } from "./theme";
@@ -74,6 +76,10 @@ export const App = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/projectSubmission" element={<ProjectSubmission />} />
             <Route path="/congrats" element={<SubmissionCongrats />} />
+            <Route path="/store-review" element={<StoreReview />} />
+            <Route path="/payments" element={<PaymentDashboard />} />
+
+
           </Routes>
         </AuthProvider>
       </ThemeProvider>

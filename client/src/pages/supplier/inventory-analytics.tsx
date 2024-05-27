@@ -1,4 +1,6 @@
-import InventoryAnalyticsComponent from "@/components/supplierComponent/InventoryAnalytics.component";
+import InventoryAnalyticsComponent from "@/components/supplierComponent/InventoryAnalyticscomponent/InventoryAnalytics.component";
+import Linechartcomponent from "@/components/supplierComponent/InventoryAnalyticscomponent/Linechartcomponent";
+import TableComponent from "@/components/supplierComponent/InventoryAnalyticscomponent/tableComponent";
 import "../../components/supplierComponent/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
@@ -8,6 +10,8 @@ const InventoryAnalytics = () => {
         <SupplierWrapper>
             <>
                 <InventoryAnalyticsComponent />
+                <Linechartcomponent />
+                <TableComponent />
             </>
         </SupplierWrapper>
     )

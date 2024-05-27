@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import Select from 'react-select'
-import Selector from '../common/selector'
+import Selector from '../../common/selector'
 
 const InventoryAnalyticsComponent = () => {
 
@@ -98,7 +98,6 @@ const InventoryAnalyticsComponent = () => {
                             </div>
                         </div>
                         <div className="slect-lebal">
-
                             <Selector
                                 label="Granularity"
                                 value={selectedValue}

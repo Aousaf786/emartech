@@ -6,7 +6,6 @@ import InventoryIcon from "@/assets/svgIcons/inventory.svg";
 import OrdersIcon from "@/assets/svgIcons/orders.svg";
 import PaymentsIcon from "@/assets/svgIcons/payments.svg";
 import PerformanceIcon from "@/assets/svgIcons/performance.svg";
-import ShipmentIcon from "@/assets/svgIcons/shipment.svg";
 import { styled } from "@mui/material";
 import { FC, useState } from "react";
 import "../../components/supplierComponent/supplierStyle.scss";
@@ -67,27 +66,27 @@ const dummyList = [
       }
     ],
   },
-  {
-    to: "/login",
-    icon: ShipmentIcon,
-    title: "Shipments",
-  },
+  // {
+  //   to: "/login",
+  //   icon: ShipmentIcon,
+  //   title: "Shipments",
+  // },
   {
     icon: PerformanceIcon,
     title: "Performance",
     subBtn: [
-      {
-        title: "Store Analytic",
-        to: "/login"
-      },
+      // {
+      //   title: "Store Analytic",
+      //   to: "/login"
+      // },
       {
         title: "Store Review",
-        to: "/login"
+        to: "/store-review"
       }
     ],
   },
   {
-    to: "/login",
+    to: "/payments",
     icon: PaymentsIcon,
     title: "Payments",
   },
