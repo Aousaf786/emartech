@@ -1,5 +1,5 @@
 import AddProductComponent from "@/components/supplierComponent/add-product.component";
-import "../../components/supplierComponent/supplierStyle.scss";
+import "../../components/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
 

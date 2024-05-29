@@ -40,12 +40,16 @@ const SupplierDashboard = lazy(
   () => import("@/pages/supplier/supplierDashboard")
 );
 
+
 const ManageInventory = lazy(() => import("@/pages/supplier/manage-inventory"));
 
 const ShippingQueue = lazy(() => import("@/pages/supplier/shipping-queue"));
 const ShipmentSummary = lazy(() => import("@/pages/supplier/shipment-summary"));
 const StoreReview = lazy(() => import("@/pages/supplier/store-review"));
-const PaymentDashboard = lazy(() => import("@/pages/supplier/paymentDashboard"));
+const PaymentDashboard = lazy(() => import("@/pages/supplier/payment-dashboard"));
+const ManageOrders = lazy(() => import("@/pages/supplier/manage-orders"));
+const ManageReturns = lazy(() => import("@/pages/supplier/manage-returns"));
+const ManageClaims = lazy(() => import("@/pages/supplier/manage-claims"));
 
 const TermsAndConditions = lazy(() => import("@/pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
@@ -53,6 +57,12 @@ const ProjectSubmission = lazy(() => import("@/pages/Project-Submission"));
 const SubmissionCongrats = lazy(
   () => import("@/pages/Project-Submission/congrats")
 );
+
+// executor - dashboard
+const ExecutorDashboard = lazy(() => import("@/pages/executor/Executor-Dashboard"));
+const OrderDetails = lazy(() => import("@/pages/executor/order-details"));
+const Orders = lazy(() => import("@/pages/executor/orders"));
+
 
 const AppRoutes: React.FC = () => {
   return (
@@ -69,7 +79,6 @@ const AppRoutes: React.FC = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/projectSubmission" element={<ProjectSubmission />} />
           <Route path="/congrats" element={<SubmissionCongrats />} />
-
           <Route path="/projectListing" element={<ProjectListing />} />
           <Route path="/projectDetails/:id" element={<ProjectDetails />} />
           <Route
@@ -82,6 +91,8 @@ const AppRoutes: React.FC = () => {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
+
+
             <Route
               path="emailVerification/:email"
               element={<EmailVerification />}
@@ -102,6 +113,16 @@ const AppRoutes: React.FC = () => {
             <Route path="shipment-summary" element={<ShipmentSummary />} />
             <Route path="store-review" element={<StoreReview />} />
             <Route path="payments" element={<PaymentDashboard />} />
+            <Route path="manage-orders" element={<ManageOrders />} />
+            <Route path="manage-returns" element={<ManageReturns />} />
+            <Route path="manage-claims" element={<ManageClaims />} />
+
+
+            {/* executor-dashboard  */}
+            <Route path="executor" element={<ExecutorDashboard />} />
+            <Route path="order-details" element={<OrderDetails />} />
+            <Route path="order" element={<Orders />} />
+
           </Route>
           <Route path="*" element={<Navigate to="/auth/login" />} />
         </Routes>

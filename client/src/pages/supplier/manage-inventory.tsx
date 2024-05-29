@@ -1,6 +1,6 @@
 import ManageInventoryComponent from "@/components/supplierComponent/manageinventory.component";
 import ManagetableComponent from "@/components/supplierComponent/managetable.component";
-import "../../components/supplierComponent/supplierStyle.scss";
+import "../../components/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
 
