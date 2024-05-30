@@ -74,7 +74,7 @@ const dummyList = [
   //   title: "Shipments",
   // },
   {
-    to: "/executor",
+    to: "/contracts",
     icon: PerformanceIcon,
     title: "Contracts",
     // subBtn: [

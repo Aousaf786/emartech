@@ -62,6 +62,8 @@ const SubmissionCongrats = lazy(
 const ExecutorDashboard = lazy(() => import("@/pages/executor/Executor-Dashboard"));
 const OrderDetails = lazy(() => import("@/pages/executor/order-details"));
 const Orders = lazy(() => import("@/pages/executor/orders"));
+const Contracts = lazy(() => import("@/pages/executor/Contracts"));
+const ContractsDetails = lazy(() => import("@/pages/executor/Contracts-details"));
 
 
 const AppRoutes: React.FC = () => {
@@ -122,6 +124,8 @@ const AppRoutes: React.FC = () => {
             <Route path="executor" element={<ExecutorDashboard />} />
             <Route path="order-details" element={<OrderDetails />} />
             <Route path="order" element={<Orders />} />
+            <Route path="contracts" element={<Contracts />} />
+            <Route path="contracts-details" element={<ContractsDetails />} />
 
           </Route>
           <Route path="*" element={<Navigate to="/auth/login" />} />

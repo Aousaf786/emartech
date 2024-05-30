@@ -33,7 +33,7 @@ const ManageOrders = () => {
 
     const tabItems = [
         {
-            label: '0 Pending', value: '1', component: <> <OrderSelectorComponent />
+            label: '0 Pending', value: '1', component: <> <OrderSelectorComponent refreshButton={<button className='refresh-button'>Refresh</button>} />
                 <TableComponent
                     tableData={tableData}
                     itemsPerPage={4}
@@ -41,7 +41,7 @@ const ManageOrders = () => {
                 /></>
         },
         {
-            label: '0 Unshipped', value: '2', component: <> <OrderSelectorComponent />
+            label: '0 Unshipped', value: '2', component: <> <OrderSelectorComponent refreshButton={<button className='refresh-button'>Refresh</button>} />
                 <TableComponent
                     tableData={tableData}
                     itemsPerPage={4}
@@ -49,7 +49,7 @@ const ManageOrders = () => {
                 /></>
         },
         {
-            label: 'Cancelled', value: '3', component: <> <OrderSelectorComponent />
+            label: 'Cancelled', value: '3', component: <> <OrderSelectorComponent refreshButton={<button className='refresh-button'>Refresh</button>} />
                 <TableComponent
                     tableData={tableData}
                     itemsPerPage={4}
@@ -57,7 +57,7 @@ const ManageOrders = () => {
                 /></>
         },
         {
-            label: 'Shipped', value: '4', component: <> <OrderSelectorComponent />
+            label: 'Shipped', value: '4', component: <> <OrderSelectorComponent refreshButton={<button className='refresh-button'>Refresh</button>} />
                 <TableComponent
                     tableData={tableData}
                     itemsPerPage={4}

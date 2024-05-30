@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Selector from "./selector";
 
-const OrderSelectorComponent = () => {
+const OrderSelectorComponent = ({ refreshButton }: any) => {
     const [selectedValue, setSelectedValue] = useState('');
 
     const options = [
@@ -34,7 +34,7 @@ const OrderSelectorComponent = () => {
                         />
                     </div>
                 </div>
-                <button className='refresh-button'>Refresh</button>
+                {refreshButton}
             </div>
 
         </div>
