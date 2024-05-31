@@ -1,7 +1,7 @@
 import ManageClaimsComponent from "@/components/supplierComponent/manage-claims.component";
 import TableComponent from "@/components/supplierComponent/table.component";
 import ViewGrantedClaims from "@/components/supplierComponent/view-granted-claims";
-import "../../components/supplierComponent/supplierStyle.scss";
+import "../../components/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
 

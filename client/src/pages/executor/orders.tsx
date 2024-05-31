@@ -1,34 +1,51 @@
 import TabsComponent from "@/components/common/TabsComponent";
 import OrderSelectorComponent from "@/components/common/orderSelectorComponent";
 import TableComponent from "@/components/supplierComponent/table.component";
+import { Link } from "react-router-dom";
 import "../../components/supplierStyle.scss";
-import { SupplierWrapper } from "./supplierWrapper";
+import { ExecutorWrapper } from "./executorWrapper";
 
 
-const ManageOrders = () => {
+const Orders = () => {
     const tableData = [
         {
-            Referance: "CUK-21500031-COC",
-            Date: "19/03/2024 18:51:59",
-            Amount: "AED 1,225.09",
-            Payment: "VISA",
-            Status: "Shipped"
+            Date: "19/03/2024 18: 51: 59",
+            OrderDetail: [
+                " Buyer Name: ", <span style={{ color: "#029358" }}>Khadija</span>, "Fulfilment Method: Emartech", <br />, "Fulfilment Channel: Emartech", <br />, "Seller order ID: 111-5563326-7333838"
+            ],
+            Productname: [<span style={{ color: "#029358" }}>Paint</span>, "SKU: 123UNLJ123"],
+            OrderType: [
+                <div className="d-flex justify-content-between">
+                    <button className="button Delivered">Payment Completed</button>
+                    <Link to={"/order-details"}>View Detail</Link>
+                </div>
+            ],
+
         },
         {
-            Referance: "CUK-21500031-COC",
-            Date: "19/03/2024 18:51:59",
-            Amount: "AED 1,225.09",
-            Payment: "VISA",
-            Status: "Shipped"
-        }
+            Date: "19/03/2024 18: 51: 59",
+            OrderDetail: [
+                " Buyer Name: ", <span style={{ color: "#029358" }}>Khadija</span>,
+                , "Fulfilment Method: Emartech", <br />, "Fulfilment Channel: Emartech", <br />, "Seller order ID: 111-5563326-7333838"
+            ],
+            Productname: [<span style={{ color: "#029358" }}>Paint</span>, "SKU: 123UNLJ123"],
+            OrderType: [
+                <div className="d-flex justify-content-between">
+                    <button className="button Pending">Pending</button>
+                    <Link to={"/order-details"}>View Detail</Link>
+                </div>
+            ],
+
+        },
+
     ];
 
     const columns = [
-        { header: "Reference", accessor: "Referance" },
         { header: "Date", accessor: "Date" },
-        { header: "Amount", accessor: "Amount" },
-        { header: "Payment", accessor: "Payment" },
-        { header: "Status", accessor: "Status" }
+        { header: "Order Detail", accessor: "OrderDetail" },
+        { header: "Product name", accessor: "Productname" },
+        { header: "Order Type", accessor: "OrderType" },
+
     ];
 
     const tabItems = [
@@ -69,17 +86,17 @@ const ManageOrders = () => {
 
 
     return (
-        <SupplierWrapper>
+        <ExecutorWrapper>
             <>
                 <div className="manage-Inventory">
-                    <h1>Manage Orders</h1>
+                    <h1> Orders</h1>
                     <p>Seller Fulfilled</p>
                     <TabsComponent tabItems={tabItems} />
 
                 </div>
             </>
-        </SupplierWrapper>
+        </ExecutorWrapper>
     )
 }
 
-export default ManageOrders;
+export default Orders;

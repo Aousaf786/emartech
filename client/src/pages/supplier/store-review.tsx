@@ -1,7 +1,7 @@
 import TableComponent from "@/components/supplierComponent/table.component";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import image from "../../assets/images/Rectangle-table-img.png";
-import "../../components/supplierComponent/supplierStyle.scss";
+import "../../components/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
 

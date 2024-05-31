@@ -1,5 +1,5 @@
 import ShippingQueueComponent from "@/components/supplierComponent/shippingqueue.component";
-import "../../components/supplierComponent/supplierStyle.scss";
+import "../../components/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
 

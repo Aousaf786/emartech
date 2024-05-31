@@ -67,6 +67,24 @@ main {
         padding: 10px;
         height: 100%;
 
+        &.executor-chart {
+            h1 {
+                padding-left: 20px;
+                color: #000;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 24.2px;
+
+            }
+
+            .description {
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 14.52px;
+                color: #767676;
+            }
+        }
+
         h5 {
             font-size: 16px;
             font-weight: 500;
@@ -225,6 +243,11 @@ main {
                         &:focus {
                             box-shadow: none;
                         }
+                    }
+
+                    a {
+                        color: #38C64E;
+                        text-decoration: none;
                     }
 
                     .button {
@@ -547,6 +570,8 @@ main {
             padding: 0px 10px;
             border-right: 1px solid #747474;
         }
+
+
     }
 
     .Shipment-form {
@@ -594,6 +619,15 @@ main {
         }
     }
 
+    .card-header {
+        margin-bottom: 0px;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 16px;
+        color: #000;
+    }
+
     .box-card {
         box-shadow: 0px 4px 30px 0px #00000026;
         background: linear-gradient(270.59deg, #079759 0.48%, #35C350 99.47%);
@@ -602,7 +636,8 @@ main {
         margin-top: 20px;
 
         &.payment-card {
-            min-height: 133px;
+            min-height: 119px;
+            margin-top: 10px;
 
             h2 {
                 font-size: 16px;
@@ -1011,4 +1046,240 @@ main {
             }
         }
     }
+}
+
+.executor-component {
+    box-shadow: 0px 3px 8.9px 4px #00000008;
+    background: #FFFFFF;
+    padding: 20px;
+
+    .Project-notification {
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 30px;
+            text-align: left;
+            color: #000000;
+        }
+
+        .notification-scroll {
+            overflow-x: scroll;
+            height: 200px;
+        }
+
+        .flex-shrink-0 {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.to-do-text {
+                background: #E46471;
+            }
+
+            &.Progress-text {
+                background: #309398;
+            }
+
+            &.Completed-text {
+                background: #6588E4;
+            }
+        }
+
+        .flex-grow-1 {
+            h2 {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 21px;
+                text-align: left;
+                color: #000000;
+                margin-bottom: 0px;
+            }
+
+            span {
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 21px;
+                color: #A0A0A0;
+            }
+
+            h3 {
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 18px;
+                letter-spacing: 0.05em;
+                color: #303030;
+            }
+
+            .notification-number {
+                width: 17px;
+                height: 17px;
+                border-radius: 50%;
+                background: #F24E1E;
+                font-size: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #fff;
+                margin-left: auto;
+            }
+
+            p {
+                font-size: 10px;
+                font-weight: 300;
+                line-height: 15px;
+                color: #303030;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 120px;
+            }
+        }
+
+    }
+
+    .see-message-button {
+        color: #029358;
+        border: 0px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: 0.05em;
+        background-color: transparent;
+        margin: auto;
+
+    }
+}
+
+.order-summary {
+    border: 1px solid #74747480;
+    background: #FFFFFF;
+    padding: 20px;
+    margin-top: 20px;
+    height: 95%;
+
+
+    h1 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 36px;
+        color: #000000;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        margin-bottom: 0px;
+        color: #747474;
+    }
+
+    span {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        color: #747474;
+    }
+}
+
+.contracts-details-component {
+    .flex-shrink-0 {
+        width: 60px;
+        height: 60px;
+
+        img {
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 16px;
+        color: #747474;
+        margin-top: 20px;
+    }
+
+    .button {
+        background: #FACC15;
+        color: #000000;
+        border: 0px;
+        padding: 5px 20px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 20.4px;
+        border-radius: 5px;
+
+        &.Declines {
+            background: var(--Primary-Black, #3C3C3C);
+            color: #fff;
+        }
+
+        &.Approved {
+            background: var(--Primary-Green, #38C64E);
+            color: #fff;
+        }
+    }
+}
+
+.Seles-Snapshot {
+    border: 1px solid #74747480;
+    margin-top: 20px;
+    border-radius: 5px;
+
+    h1 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 36px;
+        color: #000000;
+        padding: 15px 20px;
+
+        span {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 20px;
+            color: #747474;
+            margin-left: 10px;
+        }
+    }
+
+    hr {
+        margin-bottom: 0px;
+    }
+
+    .sale-snapshot-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px 20px;
+        background: #FFFFFF;
+
+        p {
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 16px;
+            color: #000000;
+            margin-bottom: 5px;
+            margin-top: 0px;
+        }
+
+        h6 {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 16px;
+            color: #747474;
+        }
+    }
+}
+
+.Attachements-content {
+    border: 1px solid #74747433;
+    padding: 20px;
+    border-radius: 10px;
 }

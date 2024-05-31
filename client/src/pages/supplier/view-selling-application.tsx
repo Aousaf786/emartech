@@ -1,7 +1,7 @@
 import { SearchComponent } from "@/components/inputs/search";
 import TableComponent from "@/components/supplierComponent/table.component";
 import { useState } from "react";
-import "../../components/supplierComponent/supplierStyle.scss";
+import "../../components/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
 
