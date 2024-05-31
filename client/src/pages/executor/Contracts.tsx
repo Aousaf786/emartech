@@ -2,6 +2,7 @@ import OrderSelectorComponent from "@/components/common/orderSelectorComponent";
 import TableComponent from "@/components/supplierComponent/table.component";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from "react-router-dom";
+import pdf from "../../assets/images/HTML_CSS_interview_question_.pdf";
 import "../../components/supplierStyle.scss";
 import { ExecutorWrapper } from "./executorWrapper";
 
@@ -15,7 +16,9 @@ const Contracts = () => {
             Documents: [
                 <div className="d-flex justify-content-between">
                     <Link to={"/contracts-details"} style={{ color: "#000" }}><Icon icon="mingcute:pdf-fill" width={25} height={25} style={{ color: "#000", marginRight: "10px" }} />Contract1.pdf</Link>
-                    <Icon icon="fa:download" style={{ color: "#000" }} />
+                    <a href={pdf} download>
+                        <Icon icon="fa:download" style={{ color: "#000" }} />
+                    </a>
                 </div>
             ],
             Status: [<button className="button Pending">Under Review</button>]
@@ -28,7 +31,9 @@ const Contracts = () => {
             Documents: [
                 <div className="d-flex justify-content-between">
                     <Link to={"/contracts-details"} style={{ color: "#000" }}><Icon icon="mingcute:pdf-fill" width={25} height={25} style={{ color: "#000", marginRight: "10px" }} />Contract1.pdf</Link>
-                    <Icon icon="fa:download" style={{ color: "#000" }} />
+                    <a href={pdf} download>
+                        <Icon icon="fa:download" style={{ color: "#000" }} />
+                    </a>
                 </div>
             ],
             Status: [<button className="button Delivered">Approved</button>]
@@ -41,7 +46,9 @@ const Contracts = () => {
             Documents: [
                 <div className="d-flex justify-content-between">
                     <Link to={"/contracts-details"} style={{ color: "#000" }}><Icon icon="mingcute:pdf-fill" width={25} height={25} style={{ color: "#000", marginRight: "10px" }} />Contract1.pdf</Link>
-                    <Icon icon="fa:download" style={{ color: "#000" }} />
+                    <a href={pdf} download>
+                        <Icon icon="fa:download" style={{ color: "#000" }} />
+                    </a>
                 </div>
             ],
             Status: [<button className="button Closed">Declines</button>]

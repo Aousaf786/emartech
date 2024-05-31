@@ -64,6 +64,9 @@ const OrderDetails = lazy(() => import("@/pages/executor/order-details"));
 const Orders = lazy(() => import("@/pages/executor/orders"));
 const Contracts = lazy(() => import("@/pages/executor/Contracts"));
 const ContractsDetails = lazy(() => import("@/pages/executor/Contracts-details"));
+const Projects = lazy(() => import("@/pages/executor/Projects"));
+const SalesDashboard = lazy(() => import("@/pages/executor/SalesDashboard"));
+const ExecutorProjectDetails = lazy(() => import("@/pages/executor/Executor-Project-Details"));
 
 
 const AppRoutes: React.FC = () => {
@@ -126,6 +129,9 @@ const AppRoutes: React.FC = () => {
             <Route path="order" element={<Orders />} />
             <Route path="contracts" element={<Contracts />} />
             <Route path="contracts-details" element={<ContractsDetails />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="sales" element={<SalesDashboard />} />
+            <Route path="executor-project-details" element={<ExecutorProjectDetails />} />
 
           </Route>
           <Route path="*" element={<Navigate to="/auth/login" />} />

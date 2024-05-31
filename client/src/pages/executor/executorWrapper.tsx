@@ -16,77 +16,29 @@ const dummyList = [
     title: "Dashboard",
   },
   {
-    to: "/executor",
+    to: "/projects",
     icon: InventoryIcon,
     title: "Projects",
-    // subBtn: [
-    //   {
-    //     title: "All Inventory",
-    //     to: "/manage-inventory"
-    //   },
-    //   {
-    //     title: "Shipments",
-    //     to: "/shipping-queue"
-    //   },
-    //   {
-    //     title: "Analytics",
-    //     to: "/inventory-analytics"
-    //   },
-    // ],
+
   },
   {
-    to: "/executor",
+    to: "/sales",
     icon: CatalogIcon,
     title: "Sales",
-    // subBtn: [
-    //   {
-    //     title: "Add Product",
-    //     to: "/add-product"
-    //   },
-    //   {
-    //     title: "Selling Application",
-    //     to: "/view-selling-application"
-    //   }
-    // ],
+
   },
   {
     to: "/order",
     icon: OrdersIcon,
     title: "Orders",
-    // subBtn: [
-    //   {
-    //     title: "Manage Orders",
-    //     to: "/manage-orders"
-    //   },
-    //   {
-    //     title: "Manage Returns",
-    //     to: "/manage-returns"
-    //   },
-    //   {
-    //     title: "Manage Claim",
-    //     to: "/manage-claims"
-    //   }
-    // ],
+
   },
-  // {
-  //   to: "/login",
-  //   icon: ShipmentIcon,
-  //   title: "Shipments",
-  // },
+
   {
     to: "/contracts",
     icon: PerformanceIcon,
     title: "Contracts",
-    // subBtn: [
-    //   {
-    //     title: "Store Analytic",
-    //     to: "/login"
-    //   },
-    //   {
-    //     title: "Store Review",
-    //     to: "/store-review"
-    //   }
-    // ],
+
   },
 
 ];
