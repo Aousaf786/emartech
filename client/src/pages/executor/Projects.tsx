@@ -2,6 +2,7 @@ import ProjectComponent from "@/components/ExecutorComponent/projectComponent";
 import TableComponent from "@/components/supplierComponent/table.component";
 import LinearProgress from '@mui/material/LinearProgress';
 import Stack from '@mui/material/Stack';
+import { Link } from "react-router-dom";
 import "../../components/supplierStyle.scss";
 import { ExecutorWrapper } from "./executorWrapper";
 
@@ -9,7 +10,10 @@ import { ExecutorWrapper } from "./executorWrapper";
 const Projects = () => {
     const tableData = [
         {
-            ProjectName: ["Fix Price Project", <span>Client A</span>],
+            ProjectName: [<Link to={"/executor-project-details"} style={{ color: "#000" }}>
+                Fix Price Project
+                <span>Client A</span>
+            </Link>],
             DueDate: "12/10/2021",
 
             Income: [
@@ -31,7 +35,7 @@ const Projects = () => {
                 </div>
             ],
             ProjectProfit: ["AED 1320.00 (24.44%)", <span>AED 4900.00 (41.88%)</span>],
-            Status: false
+            Status: [<button className="button Delivered">In progress</button>]
         },
 
 
