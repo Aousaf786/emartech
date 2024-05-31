@@ -67,19 +67,7 @@ const ProjectListingFilters: FC = () => {
   const arrayToMap = [
     {
       type: "radio",
-      title: "Location",
-      filters: [
-        "Near me",
-        "Exact location",
-        "Within 15 km",
-        "Within 30 km",
-        "Within 50 km",
-      ],
-    },
-    {
-      type: "tabs",
       title: "Salary",
-      tabs: ["Hourly", "Monthly", "Yearly"],
       filters: ["Any", "> 30000k", "> 50000k", "> 80000k", "> 100000k"],
     },
     {
@@ -89,12 +77,14 @@ const ProjectListingFilters: FC = () => {
     },
     {
       title: "Type of employment",
-      filters: ["Full-time", "Temporary", "Part-time"],
+      filters: ["Full-time", "Part-time"],
     },
   ];
   return (
     <FiltersMain>
-      <h4 className="sub-heading-text" style={{fontWeight:"700"}}>Filter</h4>
+      <h4 className="sub-heading-text" style={{ fontWeight: "700" }}>
+        Filter
+      </h4>
       {arrayToMap?.map((item: any) => (
         <>
           <h4 className="sub-heading-text">{item.title}</h4>
