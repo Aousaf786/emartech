@@ -5,186 +5,142 @@ const passport = require("passport");
 const { getEncryptedPassword } = require("./common/TenantController");
 const User = db.user;
 const PasswordResetToken = db.resetPasswordToken;
-const { getPhoneNumberDetails } = require("../helpers/utils");
+const {
+  getPhoneNumberDetails,
+  useErrorResponse,
+  useSuccessResponse,
+} = require("../helpers/utils");
 const { Op } = require("sequelize");
 
 const consts = require("../consts");
+const {
+  userSignUpService,
+  loginUserService,
+  forgotPasswordService,
+  resetPasswordService,
+  updatePasswordService,
+} = require("../services/authService");
+const asyncHandler = require("express-async-handler");
 
-// Middleware to check if user is authenticated
-exports.isAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next(); // User is authenticated, proceed to next middleware/router
+// Request: POST
+// Route: POST /api/v1/auth/signup
+// Access: Public
+
+const userSignUp = asyncHandler(async (req, res) => {
+  const userSignUpServiceResponse = await userSignUpService(req);
+
+  if (!userSignUpServiceResponse.success) {
+    return useErrorResponse(
+      res,
+      userSignUpServiceResponse.message,
+      userSignUpServiceResponse.status
+    );
   }
-  // If user is not authenticated, return an error
-  res.status(401).json({ message: "Unauthorized" });
-};
 
-exports.signin = (req, res) => {
-  try {
-    passport.authenticate("local", { session: true }, (err, user) => {
-      // if (err) {
-      //   return res.status(403).send(err);
-      // }
-      if (!user) {
-        // Handle authentication failures
-        return res.status(403).send({ message: "Invalid Credentials" });
-      }
-      req.logIn(user, (err) => {
-        if (err) {
-          // Handle login errors
-          return res.status(500).send({ message: "Login failed" });
-        } else req.session.save(() => res.send(user));
-      });
-    })(req, res);
-  } catch (error) {
-    return res.status(500).send(error);
+  return useSuccessResponse(
+    res,
+    userSignUpServiceResponse.message,
+    userSignUpServiceResponse.data,
+    userSignUpServiceResponse.status
+  );
+});
+
+// Request: POST
+// Route: POST /api/v1/auth/login
+// Access: Public
+
+const loginUser = asyncHandler(async (req, res) => {
+  const userLoginService = await loginUserService(req);
+
+  if (!userLoginService.success) {
+    return useErrorResponse(
+      res,
+      userLoginService.message,
+      userLoginService.status
+    );
   }
-};
 
-exports.signup = async (req, res) => {
-  const { phoneNumber, role, password } = req.body;
-  const { encryptedPassword, salt } = await getEncryptedPassword(password);
-  try {
-    // Create the user in the database
-    const newUser = await User.create({
-      ...req.body,
-      ...(phoneNumber && getPhoneNumberDetails(phoneNumber)),
-      password: encryptedPassword,
-      salt,
-      role: role ?? "USER",
-    });
+  return useSuccessResponse(
+    res,
+    userLoginService.message,
+    userLoginService.data,
+    userLoginService.status
+  );
+});
 
-    // Send response with user data
-    res.status(200).send({
-      _id: newUser.id,
-      name: newUser.name,
-      email: newUser.email,
-      role: newUser.role,
-    });
-  } catch (err) {
-    if (
-      err.name === "SequelizeUniqueConstraintError" &&
-      err.errors[0].path === "email"
-    ) {
-      return res.status(500).send({ message: consts.EMAIL_EXISTS });
-    } else {
-      return res.status(500).send(err);
-    }
+// Request: POST
+// Route: POST /api/v1/auth/forgotpassword
+// Access: Public
+
+const forgotPassword = asyncHandler(async (req, res) => {
+  const forgotPasswordServiceResponse = await forgotPasswordService(req);
+
+  if (!forgotPasswordServiceResponse.success) {
+    return useErrorResponse(
+      res,
+      forgotPasswordServiceResponse.message,
+      forgotPasswordServiceResponse.status
+    );
   }
-};
 
-exports.forgotPassword = async (req, res) => {
-  try {
-    const { forgetPassword } = req.body;
-    const number =
-      forgetPassword && forgetPassword.includes("+")
-        ? getPhoneNumberDetails(req.body.forgetPassword)?.phoneNumber ?? ""
-        : forgetPassword;
-    const whereClause = {
-      [Op.or]: [
-        { email: forgetPassword },
-        ...(number && [{ phoneNumber: number }]), // Conditionally include phoneNumber if it's a valid phone number
-      ],
-    };
+  return useSuccessResponse(
+    res,
+    forgotPasswordServiceResponse.message,
+    forgotPasswordServiceResponse.data,
+    forgotPasswordServiceResponse.status
+  );
+});
 
-    const user = await User.findOne({
-      where: whereClause,
-    });
+// Request: POST
+// Route: POST /api/v1/auth/resetpassword
+// Access: Public
 
-    if (user) {
-      const token = crypto.randomBytes(20).toString("hex");
+const resetPassword = asyncHandler(async (req, res) => {
+  const resetPasswordServiceResponse = await resetPasswordService(req);
 
-      // Calculate expiry timestamp (e.g., 1 hour from now)
-      const expiresAt = new Date();
-      expiresAt.setHours(expiresAt.getHours() + 1); // Expires in 1 hour
-
-      // Store the token and expiry timestamp in the database
-      await PasswordResetToken.create({
-        email: user.email,
-        token: token,
-        expires_at: expiresAt,
-      });
-
-      const resetLink = `${process.env.API_BASE_URL}/api/auth/resetPassword?token=${token}`;
-
-      // Send the email with the password reset link
-      await EmailService.sendForgotPasswordEmail({
-        email: user.email,
-        resetLink,
-        firstName: user.firstName,
-      });
-
-      res.status(200).send({
-        message: "Password reset email sent successfully",
-        email: user.email,
-      });
-    } else {
-      res
-        .status(403)
-        .send({ message: "User not found against this email/phoneNumber" });
-    }
-  } catch (err) {
-    return res.status(500).send(err);
+  if (!resetPasswordServiceResponse.success) {
+    return useErrorResponse(
+      res,
+      resetPasswordServiceResponse.message,
+      resetPasswordServiceResponse.status
+    );
   }
-};
 
-exports.resetPassword = async (req, res) => {
-  const { token } = req.query;
-  try {
-    // Find the token in the database
-    const resetToken = await PasswordResetToken.findOne({
-      where: {
-        token,
-      },
-    });
+  return useSuccessResponse(
+    res,
+    resetPasswordServiceResponse.message,
+    resetPasswordServiceResponse.data,
+    resetPasswordServiceResponse.status
+  );
+});
 
-    // Check if token is found and not expired
-    if (!resetToken || resetToken.expires_at < new Date()) {
-      return res.status(400).send("Invalid or expired token");
-    }
+// Request: POST
+// Route: POST /api/v1/auth/updatePassword
+// Access: Public
 
-    res.redirect(`${process.env.CLIENT_BASE_URL}/resetPassword?token=${token}`);
-  } catch (error) {
-    console.error("Error handling password reset token:", error);
-    res.status(500).send("Error handling password reset token");
+const updatePassword = asyncHandler(async (req, res) => {
+  const updatePasswordServiceResponse = await updatePasswordService(req);
+
+  if (!updatePasswordServiceResponse.success) {
+    return useErrorResponse(
+      res,
+      updatePasswordServiceResponse.message,
+      updatePasswordServiceResponse.status
+    );
   }
-};
 
-exports.updatePassword = async (req, res) => {
-  // Route to handle password reset form submission
-  const { token, password } = req.body;
+  return useSuccessResponse(
+    res,
+    updatePasswordServiceResponse.message,
+    updatePasswordServiceResponse.data,
+    updatePasswordServiceResponse.status
+  );
+});
 
-  try {
-    // Find the token in the database
-    const resetToken = await PasswordResetToken.findOne({
-      where: {
-        token: token,
-      },
-    });
-
-    // Check if token is found and not expired
-    if (!resetToken || resetToken.expires_at < new Date()) {
-      return res.status(400).send("Invalid or expired token");
-    }
-
-    // Update the user's password with the new password
-    const user = await User.findOne({
-      where: {
-        email: resetToken.email,
-      },
-    });
-
-    const { encryptedPassword, salt } = await getEncryptedPassword(password);
-    user.password = encryptedPassword;
-    user.salt = salt;
-    await user.save();
-
-    // Delete the reset token from the database
-    await resetToken.destroy();
-
-    res.status(200).send("Password reset successfully");
-  } catch (error) {
-    console.error("Error resetting password:", error);
-    res.status(500).send("Error resetting password");
-  }
+module.exports = {
+  userSignUp,
+  loginUser,
+  forgotPassword,
+  resetPassword,
+  updatePassword,
 };
