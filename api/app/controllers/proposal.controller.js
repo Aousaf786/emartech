@@ -29,9 +29,9 @@ exports.createProposal = async (req, res) => {
         return res.status(400).json({ message: err.message });
       }
       const proposalData = req.body;
-      proposalData.userId = 1;
+      proposalData.userId = req.user.id;
       const filePaths = req.files.map((file) => file.path);
-      console.log(req.files)
+      console.log(req.files);
       proposalData.proposalFiles = filePaths;
       const proposal = await Proposals.create(proposalData);
       res.status(201).json(proposal);
