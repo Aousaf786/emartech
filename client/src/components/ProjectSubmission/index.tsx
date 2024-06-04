@@ -125,6 +125,7 @@ const initialValues = {
   charge: "",
   proposalCount: "",
   projectType: "BY PROJECT",
+  employmentType: "FULL-TIME",
   skills: "",
 };
 
@@ -144,6 +145,7 @@ const validationSchema = Yup.object().shape({
     .min(1, "*proposal count must be between or equal to 1 and 10")
     .max(10, "*proposal count must be between or equal to 1 and 10"),
   projectType: Yup.string().required("Project type is required"),
+  employmentType: Yup.string().required("Employment type is required"),
   skills: Yup.string().test(
     "maxSkills",
     "*only 15 skills can be added",
@@ -374,7 +376,7 @@ const ProjectSubmissionForm: FC = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={6}>
                 <h4 className="sub-heading-text">Project type?</h4>
 
                 <FormControl component="fieldset" fullWidth>
@@ -395,6 +397,30 @@ const ProjectSubmissionForm: FC = () => {
                     )}
                   </Field>
                   <ErrorMessage name="projectType" />
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={6}>
+                <h4 className="sub-heading-text">Employment type?</h4>
+
+                <FormControl component="fieldset" fullWidth>
+                  <Field name="employmentType">
+                    {({ field }: any) => (
+                      <RadioGroup row {...field}>
+                        <FormControlLabel
+                          value="FULL-TIME"
+                          control={<Radio size="small" />}
+                          label="Full Time"
+                        />
+                        <FormControlLabel
+                          value="PART-TIME"
+                          control={<Radio size="small" />}
+                          label="Part Time"
+                        />
+                      </RadioGroup>
+                    )}
+                  </Field>
+                  <ErrorMessage name="employmentType" />
                 </FormControl>
               </Grid>
 
