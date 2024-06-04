@@ -1,10 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { GlobalLoader } from "@/components/common";
 import PrivateRoutes from "./privateRoutes";
@@ -31,7 +26,7 @@ const ResetPasswordSuccess = lazy(
 );
 const LandingPage = lazy(() => import("@/pages/landingPage"));
 const ProductListing = lazy(() => import("@/pages/Product-Listing"));
-const ProductDetailPage = lazy(() => import("../pages/productdetailPage"));
+const ProductDetailPage = lazy(() => import("@/pages/productDetailPage"));
 // const Layout = lazy(() => import("../containers/layout"));
 
 // SUPPLIER SCREENS
@@ -45,7 +40,9 @@ const ManageInventory = lazy(() => import("@/pages/supplier/manage-inventory"));
 const ShippingQueue = lazy(() => import("@/pages/supplier/shipping-queue"));
 const ShipmentSummary = lazy(() => import("@/pages/supplier/shipment-summary"));
 const StoreReview = lazy(() => import("@/pages/supplier/store-review"));
-const PaymentDashboard = lazy(() => import("@/pages/supplier/paymentDashboard"));
+const PaymentDashboard = lazy(
+  () => import("@/pages/supplier/paymentDashboard")
+);
 
 const TermsAndConditions = lazy(() => import("@/pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
