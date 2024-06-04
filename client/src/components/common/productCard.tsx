@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { FC } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CallMadeIcon from "@mui/icons-material/CallMade";
 
 interface ProductCardProps {
   avatar: string;
@@ -17,6 +18,7 @@ interface ProductCardProps {
   actualPrice: string;
   rating: number;
   type?: string;
+  subtitle?: string;
 }
 
 export const ProductCard: FC<ProductCardProps> = ({
@@ -26,6 +28,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   actualPrice,
   rating,
   type,
+  subtitle,
 }) => {
   return (
     <Grid
@@ -49,29 +52,51 @@ export const ProductCard: FC<ProductCardProps> = ({
             {/* First Row: Sale Label and Avatar */}
             <Grid item xs={12}>
               <Box position="relative">
-                <Typography
-                  variant="caption"
-                  component="div"
-                  sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    bgcolor: "#EA4B48",
-                    color: "white",
-                    padding: "0px 8px",
-                    borderRadius: "3.76px",
-                  }}
+                {type != "supplierListing" && (
+                  <Typography
+                    variant="caption"
+                    component="div"
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      bgcolor: "#EA4B48",
+                      color: "white",
+                      padding: "0px 8px",
+                      borderRadius: "3.76px",
+                    }}
+                  >
+                    Sale 50%
+                  </Typography>
+                )}
+
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  padding={!!avatar ? 0 : 6}
                 >
-                  Sale 50%
-                </Typography>
-                <Box display="flex" justifyContent="center" padding={6}>
-                  <Avatar src={avatar} sx={{ width: "90px", height: "90px" }} />
+                  <Avatar
+                    src={avatar}
+                    sx={
+                      !!avatar
+                        ? {
+                            height: "100%",
+                            width: "100%",
+                            borderRadius: "unset !important",
+                          }
+                        : { width: "90px", height: "90px" }
+                    }
+                  />
                 </Box>
               </Box>
             </Grid>
             {/*  Name of the product */}
             <Grid item xs={12}>
-              <Typography fontSize={13} fontWeight={"700"}>
+              <Typography
+                fontSize={type != "supplierListing" ? 13 : 15}
+                fontWeight={"700"}
+                paddingTop={type != "supplierListing" ? 0 : 2}
+              >
                 {title}
               </Typography>
             </Grid>
@@ -86,7 +111,7 @@ export const ProductCard: FC<ProductCardProps> = ({
                     component="div"
                     sx={{ fontSize: 15 }}
                   >
-                    <Box>{discountedPrice}</Box>
+                    <Box>{discountedPrice || subtitle}</Box>
                   </Typography>
                 </Grid>
                 <Grid item xs={5}>
@@ -105,15 +130,60 @@ export const ProductCard: FC<ProductCardProps> = ({
                   </Typography>
                 </Grid>
                 {/*  Cart Icon */}
-                <Grid item xs={2}>
-                  <ShoppingCartIcon />
-                </Grid>
+                {type != "supplierListing" && (
+                  <Grid item xs={2}>
+                    <ShoppingCartIcon />
+                  </Grid>
+                )}
               </Grid>
             </Grid>
             {/* Fourth Row: Rating */}
             <Grid item xs={12}>
-              <Box>
-                <Rating value={rating} precision={0.5} readOnly />
+              <Box
+                sx={
+                  type != "supplierListing"
+                    ? {}
+                    : {
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        paddingTop: "2rem",
+                      }
+                }
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                    "& .starText": {
+                      margin: "unset",
+                      fontWeight: "500",
+                    },
+                  }}
+                >
+                  <Rating value={rating} precision={0.5} readOnly />
+                  {type == "supplierListing" && (
+                    <p className="starText">4 Stars</p>
+                  )}
+                </Box>
+
+                {type == "supplierListing" && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: "50%",
+                      backgroundColor: "#F2F2F2",
+                      width: "45px",
+                      height: "45px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <CallMadeIcon />
+                  </Box>
+                )}
               </Box>
             </Grid>
           </Grid>

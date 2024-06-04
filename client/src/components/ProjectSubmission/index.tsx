@@ -20,6 +20,7 @@ import ProjectFormDropZone from "./dropZone";
 import { createProjectService } from "@/services/projectServiceCalls";
 import { getFormData } from "@/utils";
 import { useNavigate } from "react-router-dom";
+import { InputAdornment } from "@mui/material";
 
 const SubmissionFormContainer = styled(Box)(({ theme }: any) => ({
   "& .formMain": {
@@ -133,7 +134,9 @@ const validationSchema = Yup.object().shape({
   subCategory: Yup.string().required("*please select sub category"),
   // projectDescription: Yup.string().required("Project description is required"),
   projectFiles: Yup.array().min(1, "*at least one file is required"),
-  projectValue: Yup.string().required("*please enter project value"),
+  projectValue: Yup.number()
+    .min(1, "*project value must be greater than 1")
+    .required("*please enter project value"),
   location: Yup.string().required("*please enter location it’s important"),
   // charge: Yup.string().required("Charge is required"),
   proposalCount: Yup.number()
@@ -303,8 +306,13 @@ const ProjectSubmissionForm: FC = () => {
                     name="projectValue"
                     variant="outlined"
                     size="small"
+                    InputProps={{
+                      placeholder: "Enter here",
+                      endAdornment: (
+                        <InputAdornment position="end">SAR</InputAdornment>
+                      ),
+                    }}
                     error={false}
-                    InputProps={{ placeholder: "Enter here" }}
                     helperText={<ErrorMessage name="projectValue" />}
                   />
                 </FormControl>

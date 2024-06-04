@@ -1,14 +1,12 @@
 import React, { lazy, Suspense } from "react";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { GlobalLoader } from "@/components/common";
 import PrivateRoutes from "./privateRoutes";
 import PublicRoutes from "./publicRoutes";
+import SupplierListing from "@/pages/Supplier-Listing";
+import BuyerSelection from "@/pages/BuyerSelection";
+import SupplierDetails from "@/pages/Supplier-Details";
 
 const ProjectListing = lazy(() => import("@/pages/Project-Listing"));
 const ProjectDetails = lazy(() => import("@/pages/Project-Details"));
@@ -90,7 +88,9 @@ const AppRoutes: React.FC = () => {
             path="/projectDetails/:id/proposalSubmission"
             element={<ProposalSubmission />}
           />
-
+          <Route path="/supplierListing" element={<SupplierListing />} />
+          <Route path="/buyerSelection" element={<BuyerSelection />} />
+          <Route path="/supplierDetails/:id" element={<SupplierDetails />} />
           {/* PUBLIC ROUTES FOR AUTH */}
           <Route path="/auth" element={<PublicRoutes />}>
             <Route path="login" element={<Login />} />
