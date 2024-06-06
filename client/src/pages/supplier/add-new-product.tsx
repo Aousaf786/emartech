@@ -1,19 +1,20 @@
-import ExistingProductComponent from "@/components/supplierComponent/ExistingProduct/existing-product-component";
+import ImageUploader from "@/components/supplierComponent/ExistingProduct/imageuploader";
 import TableDtailComponent from "@/components/supplierComponent/ExistingProduct/table-detail-component";
 import "../../components/supplierStyle.scss";
 import { SupplierWrapper } from "./supplierWrapper";
 
 
-const ExistingProduct = () => {
+const AddNewProduct = () => {
 
 
     return (
         <SupplierWrapper>
             <>
                 <div className="Existing-Product">
-                    <ExistingProductComponent />
-                    <div className="input-field-data">
+                    <h1>Add Product</h1>
+                    <div className="input-field-data mt-0">
                         <div className="input-field">
+                            <ImageUploader />
                             <TableDtailComponent />
                         </div>
                     </div>
@@ -29,4 +30,4 @@ const ExistingProduct = () => {
     )
 }
 
-export default ExistingProduct;
+export default AddNewProduct;

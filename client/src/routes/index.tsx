@@ -50,10 +50,14 @@ const PaymentDashboard = lazy(() => import("@/pages/supplier/payment-dashboard")
 const ManageOrders = lazy(() => import("@/pages/supplier/manage-orders"));
 const ManageReturns = lazy(() => import("@/pages/supplier/manage-returns"));
 const ManageClaims = lazy(() => import("@/pages/supplier/manage-claims"));
+const AddProduct = lazy(() => import("@/pages/supplier/add-product"));
+const ExistingProduct = lazy(() => import("@/pages/supplier/existing-product"));
+const AddNewProduct = lazy(() => import("@/pages/supplier/add-new-product"));
 
 const TermsAndConditions = lazy(() => import("@/pages/TermsAndConditions"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const ProjectSubmission = lazy(() => import("@/pages/Project-Submission"));
+const ChatBox = lazy(() => import("@/pages/supplier/chat-box"));
 const SubmissionCongrats = lazy(
   () => import("@/pages/Project-Submission/congrats")
 );
@@ -67,6 +71,7 @@ const ContractsDetails = lazy(() => import("@/pages/executor/Contracts-details")
 const Projects = lazy(() => import("@/pages/executor/Projects"));
 const SalesDashboard = lazy(() => import("@/pages/executor/SalesDashboard"));
 const ExecutorProjectDetails = lazy(() => import("@/pages/executor/Executor-Project-Details"));
+const SuperAdmin = lazy(() => import("@/pages/super-admin/super-admin"));
 
 
 const AppRoutes: React.FC = () => {
@@ -121,6 +126,10 @@ const AppRoutes: React.FC = () => {
             <Route path="manage-orders" element={<ManageOrders />} />
             <Route path="manage-returns" element={<ManageReturns />} />
             <Route path="manage-claims" element={<ManageClaims />} />
+            <Route path="chat-box" element={<ChatBox />} />
+            <Route path="add-product" element={<AddProduct />} />
+            <Route path="existing-product" element={<ExistingProduct />} />
+            <Route path="add-new-product" element={<AddNewProduct />} />
 
 
             {/* executor-dashboard  */}
@@ -132,6 +141,8 @@ const AppRoutes: React.FC = () => {
             <Route path="projects" element={<Projects />} />
             <Route path="sales" element={<SalesDashboard />} />
             <Route path="executor-project-details" element={<ExecutorProjectDetails />} />
+            {/* supper admin */}
+            <Route path="super-admin" element={<SuperAdmin />} />
 
           </Route>
           <Route path="*" element={<Navigate to="/auth/login" />} />

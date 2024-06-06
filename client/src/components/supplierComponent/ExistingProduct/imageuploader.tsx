@@ -11,7 +11,6 @@ const ImageUploader = () => {
 
     return (<>
         <div className="image-uploader">
-
             {image ? (
                 <div className="preview">
                     <img src={URL.createObjectURL(image)} alt="Preview" />
@@ -35,6 +34,7 @@ const ImageUploader = () => {
         </div>
         <div className="mb-3">
             <label htmlFor="" className="label">Product Name::</label>
+            {/* <FormikField type="email" name="email" /> */}
             <input className="input" type="text" placeholder="Example " />
         </div>
         <div className="mb-3">
