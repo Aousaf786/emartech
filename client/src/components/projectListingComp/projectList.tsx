@@ -201,7 +201,7 @@ const ListProjectWithHeader: FC = () => {
           <h1 className="auth-heading">
             {projectData?.totalRecords || "0"} Jobs
           </h1>
-          <CustomizedMenus />
+          {/* <CustomizedMenus /> */}
         </Box>
         {
           // !!projectData?.projects?.length &&

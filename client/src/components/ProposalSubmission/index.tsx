@@ -113,17 +113,13 @@ const ProposalSubmissionFormContainer = styled(Box)(({ theme }: any) => ({
 const initialValues = {
   proposalDescription: "",
   proposalFiles: [],
-  bid: "",
   proposalType: "BY PROJECT",
-  time: "",
 };
 
 const validationSchema = Yup.object().shape({
   proposalDescription: Yup.string().required("Project description is required"),
   proposalFiles: Yup.array().min(1, "*at least one file is required"),
-  bid: Yup.number().required("*please enter proposal quantity"),
   proposalType: Yup.string().required("Project type is required"),
-  time: Yup.number().required("*please enter time required"),
 });
 
 const ProposalSubmissionForm: FC = () => {
@@ -206,45 +202,7 @@ const ProposalSubmissionForm: FC = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
-                <Grid container spacing={2}>
-                  <Grid item xs={6}>
-                    <h4 className="sub-heading-text">Your bid</h4>
-                    <p className="para-text"></p>
-
-                    <FormControl fullWidth>
-                      <Field
-                        as={TextField}
-                        id="bid"
-                        name="bid"
-                        variant="outlined"
-                        size="small"
-                        error={false}
-                        InputProps={{ placeholder: "Enter your bid" }}
-                        helperText={<ErrorMessage name="bid" />}
-                      />
-                    </FormControl>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <h4 className="sub-heading-text">Time</h4>
-                    <p className="para-text"></p>
-
-                    <FormControl fullWidth>
-                      <Field
-                        as={TextField}
-                        id="time"
-                        name="time"
-                        variant="outlined"
-                        size="small"
-                        error={false}
-                        InputProps={{ placeholder: "Enter the time required " }}
-                        helperText={<ErrorMessage name="time" />}
-                      />
-                    </FormControl>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <Box className="formButtons" sx={{ height: "100%" }}>
                   <Button
                     type="submit"

@@ -10,14 +10,6 @@ module.exports = (sequelize, User, Project) => {
       type: DataTypes.ARRAY(DataTypes.STRING), // Assuming it's an array of file paths
       allowNull: false,
     },
-    time: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    bid: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
     proposalType: {
       type: DataTypes.STRING,
       allowNull: false,
