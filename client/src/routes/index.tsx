@@ -7,6 +7,11 @@ import PublicRoutes from "./publicRoutes";
 import SupplierListing from "@/pages/Supplier-Listing";
 import BuyerSelection from "@/pages/BuyerSelection";
 import SupplierDetails from "@/pages/Supplier-Details";
+import SuperAdminLogin from "@/pages/SuperAdmin/login";
+import SuperAdminForgotPassword from "@/pages/SuperAdmin/forgetPassword";
+import SuperAdminResetPasswordSuccess from "@/pages/SuperAdmin/resetPasswordSuccess";
+import SuperAdminResetPassword from "@/pages/SuperAdmin/resetPassword";
+import SuperAdminEmailVerification from "@/pages/SuperAdmin/emailVerification";
 
 const ProjectListing = lazy(() => import("@/pages/Project-Listing"));
 const ProjectDetails = lazy(() => import("@/pages/Project-Details"));
@@ -144,6 +149,20 @@ const AppRoutes: React.FC = () => {
             {/* supper admin */}
             <Route path="super-admin" element={<SuperAdmin />} />
 
+          </Route>
+
+          <Route path="/super-admin" element={<PublicRoutes />}>
+            <Route path="login" element={<SuperAdminLogin />} />
+            <Route path="forgotPassword" element={<SuperAdminForgotPassword />} />
+            <Route path="resetPassword" element={<SuperAdminResetPassword />} />
+            <Route
+              path="emailVerification/:email"
+              element={<SuperAdminEmailVerification />}
+            />
+            <Route
+              path="resetPasswordSuccess"
+              element={<SuperAdminResetPasswordSuccess />}
+            />
           </Route>
           <Route path="*" element={<Navigate to="/auth/login" />} />
         </Routes>
