@@ -37,10 +37,6 @@ const Projects = () => {
             ProjectProfit: ["AED 1320.00 (24.44%)", <span>AED 4900.00 (41.88%)</span>],
             Status: [<button className="button Delivered">In progress</button>]
         },
-
-
-
-
     ];
 
     const columns = [
@@ -51,7 +47,6 @@ const Projects = () => {
         { header: "Labour cost", accessor: "Labourcost" },
         { header: "Project Profit", accessor: "ProjectProfit" },
         { header: "Status", accessor: "Status" },
-
     ];
 
     return (

@@ -15,14 +15,12 @@ const AddProductComponent = () => {
         setShowTable(true); // Show the table when a search is performed
     };
 
-    // Function to handle radio button click
+
+
     const handleRadioButtonClick = (event: any) => {
-        if (event.target.id === "flexRadioDefault2") {
-            setIsNewProduct(true); // Set isNewProduct to true for new product
-            navigate("/existing-product"); // Navigate to '/existing-product' page
-        } else {
-            setIsNewProduct(false); // Set isNewProduct to false for existing product
-        }
+        const value = event.target.id === 'flexRadioDefault2';
+        setIsNewProduct(value);
+        navigate(value ? '/add-new-product' : '/existing-product');
     };
 
     return (
@@ -36,14 +34,27 @@ const AddProductComponent = () => {
                             <h1>Find your products in Emartech’s catalog</h1>
                             <div className="d-flex gap-4">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked={!isNewProduct} onChange={handleRadioButtonClick} />
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="flexRadioDefault"
+                                        id="flexRadioDefault1"
+                                        checked={isNewProduct}
+                                        onChange={handleRadioButtonClick}
+                                    />
                                     <label className="form-check-label" htmlFor="flexRadioDefault1">
                                         Search for Existing product
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked={isNewProduct}
-                                        onChange={handleRadioButtonClick} />
+                                    <input
+                                        className="form-check-input"
+                                        type="radio"
+                                        name="flexRadioDefault"
+                                        id="flexRadioDefault2"
+                                        checked={isNewProduct}
+                                        onChange={handleRadioButtonClick}
+                                    />
                                     <label className="form-check-label" htmlFor="flexRadioDefault2">
                                         Add New Product
                                     </label>
