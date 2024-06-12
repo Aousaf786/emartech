@@ -14,6 +14,7 @@ const { errorHandler } = require("./app/middleware/errorMiddleware.js");
 const authRoutes = require("./app/routes/authRoute.js");
 const projectRoutes = require("./app/routes/projectRoutes.js");
 const proposalRoutes = require("./app/routes/proposalsRoutes.js");
+const productRoutes = require("./app/routes/productRoutes.js");
 
 // START FROM HERE
 const app = express();
@@ -67,6 +68,7 @@ if (process.env.NODE_ENV == "development") {
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/project", projectRoutes);
 app.use("/api/v1/proposal", proposalRoutes);
+app.use("/api/v1/product", productRoutes);
 
 app.use(errorHandler);
 

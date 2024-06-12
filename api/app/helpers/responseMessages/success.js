@@ -8,6 +8,31 @@ const userSuccessMessages = {
   AllUsers: "All Users Get Successfully",
 };
 
+const createProductSuccessMessage = {
+  created: "Product created successfully",
+};
+
+const getAllProductsSuccesMessage = {
+  AllProducts: "All Products Get Successfully",
+};
+
+const getProductByIdSuccessMessage = {
+  getProduct: "Get Product By Id Successfully",
+};
+
+const updateProductByIdSuccessMessage = {
+  updateProduct: "Product Updated Successfully",
+};
+
+const deleteProductByIdSuccessMessage = {
+  deleteProduct: "Product Deleted Successfully",
+};
+
 module.exports = {
   userSuccessMessages,
+  getAllProductsSuccesMessage,
+  createProductSuccessMessage,
+  getProductByIdSuccessMessage,
+  updateProductByIdSuccessMessage,
+  deleteProductByIdSuccessMessage,
 };

@@ -24,20 +24,20 @@ const protectRoute = asyncHandler(async (req, res, next) => {
       req.user = user;
       next();
     } catch (error) {
-      return useErrorResponse(
+      return useErrorResponse({
         res,
-        authMiddleWareErrorMessages.InValidToken,
-        498
-      );
+        message: authMiddleWareErrorMessages.InValidToken,
+        status: 498,
+      });
     }
   }
 
   if (!token) {
-    return useErrorResponse(
+    return useErrorResponse({
       res,
-      authMiddleWareErrorMessages.TokenNotFound,
-      401
-    );
+      message: authMiddleWareErrorMessages.TokenNotFound,
+      status: 401,
+    });
   }
 });
 
@@ -50,15 +50,19 @@ const superAdmin = asyncHandler(async (req, res, next) => {
   });
 
   if (!isRoleExists) {
-    return useErrorResponse(res, authMiddleWareErrorMessages.RoleNotFound, 404);
+    return useErrorResponse({
+      res,
+      message: authMiddleWareErrorMessages.RoleNotFound,
+      status: 404,
+    });
   }
 
   if (req.user.role_id != isRoleExists?.id) {
-    return useErrorResponse(
+    return useErrorResponse({
       res,
-      authMiddleWareErrorMessages.UnAuthorizedAdmin,
-      401
-    );
+      message: authMiddleWareErrorMessages.UnAuthorizedAdmin,
+      status: 401,
+    });
   } else {
     next();
   }

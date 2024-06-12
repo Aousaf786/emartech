@@ -12,6 +12,10 @@ const userErrorMessages = {
   EmailAlreadyExists: "User already exists with this email",
 };
 
+const createProductErrorMessage = {
+  NotCreated: "Product is not created due to some issue",
+};
+
 const authMiddleWareErrorMessages = {
   InValidToken: "Invalid token",
   TokenNotFound: "Token not found",
@@ -19,7 +23,30 @@ const authMiddleWareErrorMessages = {
   UnAuthorizedAdmin: "You have no Role of Admin",
 };
 
+const getAllProductsErrorMesage = {
+  NotFound: "Products not found",
+};
+
+const getProductByIdErrorMesage = {
+  NotFound: "Product not found",
+};
+
+const updateProductByIdErrorMesage = {
+  NotFound: "Product not found",
+  serverError: "Internal Server Error",
+};
+
+const deleteProductByIdErrorMesage = {
+  NotFound: "Product not found",
+  serverError: "Internal Server Error",
+};
+
 module.exports = {
   userErrorMessages,
   authMiddleWareErrorMessages,
+  getAllProductsErrorMesage,
+  createProductErrorMessage,
+  getProductByIdErrorMesage,
+  updateProductByIdErrorMesage,
+  deleteProductByIdErrorMesage,
 };

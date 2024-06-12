@@ -10,20 +10,25 @@ const getPhoneNumberDetails = (number) => {
   } else return {};
 };
 
-const useSuccessResponse = (res, message, data, statusCode) => {
-  return res.status(statusCode).json({
+const useSuccessResponse = ({
+  res = {},
+  message = "",
+  data = [],
+  status = 200,
+}) => {
+  return res.status(status).json({
     message,
     success: true,
-    statusCode,
+    status,
     data,
   });
 };
 
-const useErrorResponse = (res, message, statusCode) => {
-  return res.status(statusCode).json({
+const useErrorResponse = ({ res = {}, message = "", status = 404 }) => {
+  return res.status(status).json({
     message,
     success: false,
-    statusCode,
+    status,
   });
 };
 
