@@ -31,6 +31,7 @@ db.proposals = require("../models/proposal.model.js")(
   db.user,
   db.projects
 );
+db.products = require("../models/product.model.js")(sequelize);
 db.resetPasswordToken = require("../models/passwordResetToken.model.js")(
   sequelize
 );

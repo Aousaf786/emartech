@@ -9,7 +9,11 @@ const validateUser = (req, res, next) => {
   if (!errors.isEmpty()) {
     if (!errors.isEmpty()) {
       for (let err in errors.errors) {
-        return useErrorResponse(res, errors.errors[err].msg, 422);
+        return useErrorResponse({
+          res,
+          message: errors.errors[err].msg,
+          status: 422,
+        });
       }
     }
   }

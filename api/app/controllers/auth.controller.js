@@ -30,19 +30,19 @@ const userSignUp = asyncHandler(async (req, res) => {
   const userSignUpServiceResponse = await userSignUpService(req);
 
   if (!userSignUpServiceResponse.success) {
-    return useErrorResponse(
+    return useErrorResponse({
       res,
-      userSignUpServiceResponse.message,
-      userSignUpServiceResponse.status
-    );
+      message: userSignUpServiceResponse.message,
+      status: userSignUpServiceResponse.status,
+    });
   }
 
-  return useSuccessResponse(
+  return useSuccessResponse({
     res,
-    userSignUpServiceResponse.message,
-    userSignUpServiceResponse.data,
-    userSignUpServiceResponse.status
-  );
+    message: userSignUpServiceResponse.message,
+    data: userSignUpServiceResponse.data,
+    status: userSignUpServiceResponse.status,
+  });
 });
 
 // Request: POST
@@ -53,19 +53,19 @@ const loginUser = asyncHandler(async (req, res) => {
   const userLoginService = await loginUserService(req);
 
   if (!userLoginService.success) {
-    return useErrorResponse(
+    return useErrorResponse({
       res,
-      userLoginService.message,
-      userLoginService.status
-    );
+      message: userLoginService.message,
+      status: userLoginService.status,
+    });
   }
 
-  return useSuccessResponse(
+  return useSuccessResponse({
     res,
-    userLoginService.message,
-    userLoginService.data,
-    userLoginService.status
-  );
+    message: userLoginService.message,
+    data: userLoginService.data,
+    status: userLoginService.status,
+  });
 });
 
 // Request: POST
@@ -76,19 +76,19 @@ const forgotPassword = asyncHandler(async (req, res) => {
   const forgotPasswordServiceResponse = await forgotPasswordService(req);
 
   if (!forgotPasswordServiceResponse.success) {
-    return useErrorResponse(
+    return useErrorResponse({
       res,
-      forgotPasswordServiceResponse.message,
-      forgotPasswordServiceResponse.status
-    );
+      message: forgotPasswordServiceResponse.message,
+      status: forgotPasswordServiceResponse.status,
+    });
   }
 
-  return useSuccessResponse(
+  return useSuccessResponse({
     res,
-    forgotPasswordServiceResponse.message,
-    forgotPasswordServiceResponse.data,
-    forgotPasswordServiceResponse.status
-  );
+    message: forgotPasswordServiceResponse.message,
+    data: forgotPasswordServiceResponse.data,
+    status: forgotPasswordServiceResponse.status,
+  });
 });
 
 // Request: POST
@@ -99,19 +99,19 @@ const resetPassword = asyncHandler(async (req, res) => {
   const resetPasswordServiceResponse = await resetPasswordService(req);
 
   if (!resetPasswordServiceResponse.success) {
-    return useErrorResponse(
+    return useErrorResponse({
       res,
-      resetPasswordServiceResponse.message,
-      resetPasswordServiceResponse.status
-    );
+      message: resetPasswordServiceResponse.message,
+      status: resetPasswordServiceResponse.status,
+    });
   }
 
-  return useSuccessResponse(
+  return useSuccessResponse({
     res,
-    resetPasswordServiceResponse.message,
-    resetPasswordServiceResponse.data,
-    resetPasswordServiceResponse.status
-  );
+    message: resetPasswordServiceResponse.message,
+    data: resetPasswordServiceResponse.data,
+    status: resetPasswordServiceResponse.status,
+  });
 });
 
 // Request: POST
@@ -122,19 +122,19 @@ const updatePassword = asyncHandler(async (req, res) => {
   const updatePasswordServiceResponse = await updatePasswordService(req);
 
   if (!updatePasswordServiceResponse.success) {
-    return useErrorResponse(
+    return useErrorResponse({
       res,
-      updatePasswordServiceResponse.message,
-      updatePasswordServiceResponse.status
-    );
+      message: updatePasswordServiceResponse.message,
+      status: updatePasswordServiceResponse.status,
+    });
   }
 
-  return useSuccessResponse(
+  return useSuccessResponse({
     res,
-    updatePasswordServiceResponse.message,
-    updatePasswordServiceResponse.data,
-    updatePasswordServiceResponse.status
-  );
+    message: updatePasswordServiceResponse.message,
+    data: updatePasswordServiceResponse.data,
+    status: updatePasswordServiceResponse.status,
+  });
 });
 
 module.exports = {
