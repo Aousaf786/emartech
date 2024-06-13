@@ -28,7 +28,7 @@ const createProduct = asyncHandler(async (req, res) => {
 
 // Get all products
 const getAllProducts = asyncHandler(async (req, res) => {
-  const getAllProductsServiceResponse = await getAllProductsService();
+  const getAllProductsServiceResponse = await getAllProductsService(req);
   if (!getAllProductsServiceResponse.success) {
     return useErrorResponse({
       res,

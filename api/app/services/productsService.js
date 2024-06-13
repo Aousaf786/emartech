@@ -25,6 +25,7 @@ const createProductService = asyncHandler(async (req, res) => {
   let createProductServiceResponse = {};
   const {
     name,
+    status,
     description,
     quantity,
     handlingTime,
@@ -41,6 +42,7 @@ const createProductService = asyncHandler(async (req, res) => {
   try {
     const product = await productModel.create({
       name,
+      status,
       description,
       quantity,
       handlingTime,
@@ -73,7 +75,19 @@ const createProductService = asyncHandler(async (req, res) => {
 const getAllProductsService = asyncHandler(async (req, res) => {
   let getAllProductsServiceResponse = {};
   try {
-    const products = await productModel.findAll({ raw: true });
+    const { status, fulfillmentChannel } = req?.query;
+    queryConditions = {};
+    if (status && status !== "All") {
+      queryConditions.status = status;
+    }
+    if (fulfillmentChannel && fulfillmentChannel !== "All") {
+      queryConditions.fulfillmentChannel = fulfillmentChannel;
+    }
+    const products = await productModel.findAll({
+      where: queryConditions,
+      raw: true,
+    });
+
     return (getAllProductsServiceResponse = {
       success: true,
       message: getAllProductsSuccesMessage.AllProducts,

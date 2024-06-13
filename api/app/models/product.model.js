@@ -6,6 +6,17 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "Inactive",
+      validate: {
+        isIn: {
+          args: [["Inactive", "Active"]], // Allowed roles
+          msg: "Invalid status", // Custom error message
+        },
+      },
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -65,9 +76,11 @@ module.exports = (sequelize) => {
     fulfillmentChannel: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "Emartech",
       validate: {
-        notEmpty: {
-          msg: "Fulfillment channel is required.",
+        isIn: {
+          args: [["Emartech", "Marchant"]], // Allowed values
+          msg: "Invalid Value", // Custom error message
         },
       },
     },

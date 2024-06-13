@@ -1,6 +1,7 @@
 const createProductResponseData = (product) => {
   const {
     name,
+    status,
     description,
     quantity,
     handlingTime,
@@ -16,6 +17,7 @@ const createProductResponseData = (product) => {
   } = product;
   return {
     name,
+    status,
     description,
     quantity,
     handlingTime,
