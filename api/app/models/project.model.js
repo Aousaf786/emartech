@@ -50,6 +50,17 @@ module.exports = (sequelize, User) => {
         },
       },
     },
+    employmentType: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "FULL-TIME",
+      validate: {
+        isIn: {
+          args: [["FULL-TIME", "PART-TIME"]], // Allowed roles
+          msg: "Invalid type", // Custom error message
+        },
+      },
+    },
     skills: {
       type: DataTypes.STRING,
       allowNull: true,

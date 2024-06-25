@@ -6,11 +6,19 @@ const proposalController = require("../controllers/proposal.controller");
 const { protectRoute } = require("../middleware/authMiddleware");
 
 //proposal routes
-router.post("/proposal", proposalController.createProposal);
-router.get("/proposalByUser", proposalController.getAllProposalsByUser);
-router.get("/proposalByProject", proposalController.getAllProposalsByProject);
-router.get("/proposal/:id", proposalController.getProposalById);
-router.put("/proposal/:id", proposalController.updateProposalById);
-router.delete("/proposal/:id", proposalController.deleteProposalById);
+router.post("/", protectRoute, proposalController.createProposal);
+router.get(
+  "/proposalByUser",
+  protectRoute,
+  proposalController.getAllProposalsByUser
+);
+router.get(
+  "/proposalByProject",
+  protectRoute,
+  proposalController.getAllProposalsByProject
+);
+router.get("/:id", protectRoute, proposalController.getProposalById);
+router.put("/:id", protectRoute, proposalController.updateProposalById);
+router.delete("/:id", protectRoute, proposalController.deleteProposalById);
 
 module.exports = router;

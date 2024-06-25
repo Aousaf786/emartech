@@ -29,7 +29,7 @@ exports.createProject = async (req, res) => {
         return res.status(400).json({ message: err.message });
       }
       const projectData = req.body;
-      projectData.userId = 1;
+      projectData.userId = req.user.id;
       const filePaths = req.files.map((file) => file.path);
       projectData.projectFiles = filePaths;
       const project = await Projects.create(projectData);
@@ -43,26 +43,83 @@ exports.createProject = async (req, res) => {
 // Get all projects
 exports.getAllProjects = async (req, res) => {
   try {
-    let page = req.query.page ? parseInt(req.query.page) : 1; // Default page is 1
-    let limit = req.query.limit ? parseInt(req.query.limit) : 10; // Default limit is 10
+    const {
+      page = 1,
+      limit = 10,
+      salary,
+      date,
+      employmentType,
+      jobTitle,
+      location,
+    } = req.query;
 
-    // Calculate the offset based on the page and limit
-    let offset = (page - 1) * limit;
+    // Validate page and limit
+    const parsedPage = parseInt(page);
+    const parsedLimit = parseInt(limit);
+    if (
+      isNaN(parsedPage) ||
+      isNaN(parsedLimit) ||
+      parsedPage <= 0 ||
+      parsedLimit <= 0
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Page and limit must be positive integers" });
+    }
 
-    // Fetch total number of projects
-    const totalProjects = await Projects.count();
+    const offset = (parsedPage - 1) * parsedLimit;
 
-    // Fetch projects including the associated user data with pagination
+    const whereConditions = {};
+
+    // Salary Filter
+    if (salary) {
+      const parsedSalary = parseInt(salary);
+      if (!isNaN(parsedSalary)) {
+        whereConditions.projectValue = { [Op.gte]: parsedSalary };
+      }
+    }
+
+    // Date of Posting Filter
+    if (date) {
+      const dateCondition = getDateCondition(date);
+      if (dateCondition) {
+        whereConditions.createdAt = dateCondition;
+      }
+    }
+
+    // Employment Type Filter
+    if (
+      employmentType &&
+      ["FULL-TIME", "PART-TIME"].includes(employmentType.toUpperCase())
+    ) {
+      whereConditions.employmentType = employmentType.toUpperCase();
+    }
+
+    // Job Title Search
+    if (jobTitle) {
+      whereConditions.jobTitle = { [Op.iLike]: `%${jobTitle}%` }; // Case-insensitive search
+    }
+
+    // Location Search
+    if (location) {
+      whereConditions.location = { [Op.iLike]: `%${location}%` }; // Case-insensitive search
+    }
+
+    const totalProjects = await Projects.count({ where: whereConditions });
     const projects = await Projects.findAll({
-      include: User,
-      limit: limit,
-      offset: offset
+      include: {
+        model: User,
+        attributes: ["id", "firstName", "lastName", "role", "country", "email"], // Adjust attributes as needed
+      },
+      where: whereConditions,
+      limit: parsedLimit,
+      offset: offset,
     });
 
-    // Send response with projects and total count
-    res.json({ projects: projects, totalRecords: totalProjects });
+    res.json({ projects, totalRecords: totalProjects });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -117,5 +174,19 @@ exports.deleteProjectById = async (req, res) => {
     res.json({ message: "Project deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+};
+
+const getDateCondition = (date) => {
+  const now = new Date();
+  switch (date) {
+    case "last24hours":
+      return { [Op.gte]: new Date(now - 24 * 60 * 60 * 1000) };
+    case "last3days":
+      return { [Op.gte]: new Date(now - 3 * 24 * 60 * 60 * 1000) };
+    case "last7days":
+      return { [Op.gte]: new Date(now - 7 * 24 * 60 * 60 * 1000) };
+    default:
+      return null;
   }
 };

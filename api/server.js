@@ -66,7 +66,7 @@ if (process.env.NODE_ENV == "development") {
 // routes
 // require("./app/routes/auth.routes")(app);
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/project", projectRoutes);
+app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/proposal", proposalRoutes);
 app.use("/api/v1/product", productRoutes);
 
