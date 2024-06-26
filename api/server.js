@@ -15,6 +15,8 @@ const authRoutes = require("./app/routes/authRoute.js");
 const projectRoutes = require("./app/routes/projectRoutes.js");
 const proposalRoutes = require("./app/routes/proposalsRoutes.js");
 const productRoutes = require("./app/routes/productRoutes.js");
+const orderRoutes = require("./app/routes/orderRoutes.js");
+const shipmentRoutes = require("./app/routes/shipmentRoutes.js");
 
 // START FROM HERE
 const app = express();
@@ -69,6 +71,8 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/proposal", proposalRoutes);
 app.use("/api/v1/product", productRoutes);
+app.use("/api/v1/order", orderRoutes);
+app.use("/api/v1/shipment", shipmentRoutes);
 
 app.use(errorHandler);
 

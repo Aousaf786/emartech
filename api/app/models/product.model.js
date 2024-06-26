@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
       defaultValue: 0.0,
       validate: {
         notEmpty: {
-          msg: "Quantity cannot be empty",
+          msg: "Price cannot be empty",
         },
       },
     },

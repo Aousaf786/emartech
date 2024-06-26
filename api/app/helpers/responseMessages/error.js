@@ -23,30 +23,50 @@ const authMiddleWareErrorMessages = {
   UnAuthorizedAdmin: "You have no Role of Admin",
 };
 
-const getAllProductsErrorMesage = {
+const getAllProductsErrorMessage = {
   NotFound: "Products not found",
 };
 
-const getProductByIdErrorMesage = {
+const getProductByIdErrorMessage = {
   NotFound: "Product not found",
 };
 
-const updateProductByIdErrorMesage = {
+const updateProductByIdErrorMessage = {
   NotFound: "Product not found",
-  serverError: "Internal Server Error",
+  ServerError: "Internal Server Error",
 };
 
-const deleteProductByIdErrorMesage = {
+const deleteProductByIdErrorMessage = {
   NotFound: "Product not found",
-  serverError: "Internal Server Error",
+  ServerError: "Internal Server Error",
+};
+
+const createOrderErrorMessage = {
+  NotCreated: "Order is not created due to some issue",
+};
+
+const getAllOrdersErrorMessage = {
+  NotFound: "Orders not found",
+};
+
+const createShipmentErrorMessage = {
+  NotCreated: "Shipment is not created due to some issue",
+};
+
+const getAllShipmentsErrorMessage = {
+  NotFound: "Shipments not found",
 };
 
 module.exports = {
   userErrorMessages,
   authMiddleWareErrorMessages,
-  getAllProductsErrorMesage,
+  getAllProductsErrorMessage,
   createProductErrorMessage,
-  getProductByIdErrorMesage,
-  updateProductByIdErrorMesage,
-  deleteProductByIdErrorMesage,
+  getProductByIdErrorMessage,
+  updateProductByIdErrorMessage,
+  deleteProductByIdErrorMessage,
+  createOrderErrorMessage,
+  getAllOrdersErrorMessage,
+  createShipmentErrorMessage,
+  getAllShipmentsErrorMessage,
 };
