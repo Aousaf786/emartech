@@ -1,11 +1,11 @@
 const asyncHandler = require("express-async-handler");
 const { products: productModel } = require("../models");
 const {
-  getAllProductsErrorMesage,
+  getAllProductsErrorMessage,
   createProductErrorMessage,
-  getProductByIdErrorMesage,
-  updateProductByIdErrorMesage,
-  deleteProductByIdErrorMesage,
+  getProductByIdErrorMessage,
+  updateProductByIdErrorMessage,
+  deleteProductByIdErrorMessage,
 } = require("../helpers/responseMessages/error");
 const {
   getAllProductsSuccesMessage,
@@ -59,7 +59,7 @@ const createProductService = asyncHandler(async (req, res) => {
 
     return (createProductServiceResponse = {
       success: true,
-      message: createProductSuccessMessage.created,
+      message: createProductSuccessMessage.Created,
       status: 200,
       data: createProductResponseData(product),
     });
@@ -97,7 +97,7 @@ const getAllProductsService = asyncHandler(async (req, res) => {
   } catch (error) {
     return (getAllProductsServiceResponse = {
       success: false,
-      message: getAllProductsErrorMesage.NotFound,
+      message: getAllProductsErrorMessage.NotFound,
       status: 404,
     });
   }
@@ -110,7 +110,7 @@ const getProductByIdService = asyncHandler(async (req, res) => {
     if (product) {
       return (getProductByIdServiceResponse = {
         success: true,
-        message: getProductByIdSuccessMessage.getProduct,
+        message: getProductByIdSuccessMessage.GetProduct,
         status: 200,
         data: getProductByIdResponseData(product),
       });
@@ -118,7 +118,7 @@ const getProductByIdService = asyncHandler(async (req, res) => {
   } catch (error) {
     return (getProductByIdServiceResponse = {
       success: false,
-      message: getProductByIdErrorMesage.NotFound,
+      message: getProductByIdErrorMessage.NotFound,
       status: 404,
     });
   }
@@ -141,20 +141,20 @@ const updateProductByIdService = asyncHandler(async (req, res) => {
     if (updatedRowsCount === 0) {
       return (updateProductByIdServiceResponse = {
         success: false,
-        message: updateProductByIdErrorMesage.NotFound,
+        message: updateProductByIdErrorMessage.NotFound,
         status: 404,
       });
     }
     return (updateProductByIdServiceResponse = {
       success: true,
-      message: updateProductByIdSuccessMessage.updateProduct,
+      message: updateProductByIdSuccessMessage.UpdateProduct,
       status: 200,
       data: updateProductByIdResponseData(updatedProduct[0]),
     });
   } catch (error) {
     return (updateProductByIdServiceResponse = {
       success: false,
-      message: updateProductByIdErrorMesage.serverError,
+      message: updateProductByIdErrorMessage.ServerError,
       status: 500,
     });
   }
@@ -169,20 +169,20 @@ const deleteProductByIdService = asyncHandler(async (req, res) => {
       await product.destroy();
       return (deleteProductByIdServiceResponse = {
         success: true,
-        message: deleteProductByIdSuccessMessage.deleteProduct,
+        message: deleteProductByIdSuccessMessage.DeleteProduct,
         status: 204,
       });
     } else {
       return (deleteProductByIdServiceResponse = {
         success: false,
-        message: deleteProductByIdErrorMesage.NotFound,
+        message: deleteProductByIdErrorMessage.NotFound,
         status: 404,
       });
     }
   } catch (error) {
     return (deleteProductByIdServiceResponse = {
       success: false,
-      message: deleteProductByIdErrorMesage.serverError,
+      message: deleteProductByIdErrorMessage.ServerError,
       status: 500,
     });
   }

@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize) => {
@@ -69,7 +68,6 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
     },
-
     {
       hooks: {
         beforeCreate: async (user) => {

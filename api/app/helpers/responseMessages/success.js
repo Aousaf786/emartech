@@ -9,7 +9,7 @@ const userSuccessMessages = {
 };
 
 const createProductSuccessMessage = {
-  created: "Product created successfully",
+  Created: "Product created successfully",
 };
 
 const getAllProductsSuccesMessage = {
@@ -17,15 +17,31 @@ const getAllProductsSuccesMessage = {
 };
 
 const getProductByIdSuccessMessage = {
-  getProduct: "Get Product By Id Successfully",
+  GetProduct: "Get Product By Id Successfully",
 };
 
 const updateProductByIdSuccessMessage = {
-  updateProduct: "Product Updated Successfully",
+  UpdateProduct: "Product Updated Successfully",
 };
 
 const deleteProductByIdSuccessMessage = {
-  deleteProduct: "Product Deleted Successfully",
+  DeleteProduct: "Product Deleted Successfully",
+};
+
+const createOrderSuccessMessage = {
+  Created: "Order created successfully",
+};
+
+const getAllOrdersSuccesMessage = {
+  AllOrders: "All Orders Get Successfully",
+};
+
+const createShipmentSuccessMessage = {
+  Created: "Shipment created successfully",
+};
+
+const getAllShipmentsSuccesMessage = {
+  AllShipments: "All Shipments Get Successfully",
 };
 
 module.exports = {
@@ -35,4 +51,8 @@ module.exports = {
   getProductByIdSuccessMessage,
   updateProductByIdSuccessMessage,
   deleteProductByIdSuccessMessage,
+  createOrderSuccessMessage,
+  getAllOrdersSuccesMessage,
+  createShipmentSuccessMessage,
+  getAllShipmentsSuccesMessage,
 };
