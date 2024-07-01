@@ -35,6 +35,7 @@ const ResetPasswordSuccess = lazy(
 const LandingPage = lazy(() => import("@/pages/landingPage"));
 const ProductListing = lazy(() => import("@/pages/Product-Listing"));
 const ProductDetailPage = lazy(() => import("../pages/productdetailPage"));
+const AddtoCart = lazy(() => import("@/pages/AddToCart/index"));
 // const Layout = lazy(() => import("../containers/layout"));
 
 // SUPPLIER SCREENS
@@ -101,13 +102,13 @@ const AppRoutes: React.FC = () => {
           <Route path="/supplierListing" element={<SupplierListing />} />
           <Route path="/buyerSelection" element={<BuyerSelection />} />
           <Route path="/supplierDetails/:id" element={<SupplierDetails />} />
+          <Route path="/add-to-cart" element={<AddtoCart />} />
+          <Route path="/checkout" element={<AddtoCart />} />
           {/* PUBLIC ROUTES FOR AUTH */}
           <Route path="/auth" element={<PublicRoutes />}>
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
-
-
             <Route
               path="emailVerification/:email"
               element={<EmailVerification />}
